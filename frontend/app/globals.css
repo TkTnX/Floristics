@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@theme inline {
+	--font-family: 'fontMuseo';
+	--color-white: #fff;
+	--color-link: #173835;
+	--color-471f27: #471f27;
+	--color-bg-black: #292933;
+	--color-bg-light: #f6f3f1;
+	--color-bg-sale: #f873af;
+	--color-bg-gold: #b69b89;
+	--color-bg-rose: #f8e1de;
+	--color-text-grey: #4f4f65;
+	--color-text-br-grey: #cfcfd7;
+	--color-text-grey: #666;
+	--color-button-hovered-bg-dark: #424251;
+	--color-button-hovered-bg-gold: #c4b3a7;
+	--color-button-pressed-bg-gold: #9d816e;
+	--color-button-disabled-bg-gold: #c4bab4;
+	--color-button-pressed-bg-dark: #11111b;
+	--color-button--disabled-bg-dark: #696970;
+}
+
+body {
+	font-family: var(--font-family);
+	color: var(--color-bg-black);
+}
+
+.container {
+	@apply mx-auto max-w-322.5 px-3.5;
+}
+
+button {
+	@apply cursor-pointer;
+}
