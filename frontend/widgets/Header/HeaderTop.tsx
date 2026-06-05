@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const HeaderTop = () => {
 	return (
-		<div className='bg-bg-black text-bg-light'>
+		<div className='bg-bg-black text-bg-light hidden lg:block'>
 			<div className='container flex items-center justify-between text-xs font-light'>
 				<div className='flex items-center gap-10'>
 					<button className='bg-button-pressed-bg-dark flex items-center gap-2.5 px-2.75 py-2 text-[13px]'>

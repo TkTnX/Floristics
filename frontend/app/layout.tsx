@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
 import { Header } from "@/widgets";
+import { cn } from "@/shared/lib/utils";
+
 
 const fontMuseo = localFont({
   src: [
@@ -43,7 +45,7 @@ export default function RootLayout({
     <html
       suppressHydrationWarning
       lang="ru"
-      className={` ${fontMuseo.className} h-full antialiased`}
+      className={cn("h-full", "antialiased", fontMuseo.className)}
     >
       <body className="min-h-full flex flex-col">
         <Header />
