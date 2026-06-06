@@ -47,7 +47,7 @@ export default function RootLayout({
       lang="ru"
       className={cn("h-full", "antialiased", fontMuseo.className)}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden">
         <Header />
         {children}
       </body>

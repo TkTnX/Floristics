@@ -1,9 +1,11 @@
-import { Hero } from "@/widgets/Hero";
+import { Achievements, BestSellers, Hero } from '@/widgets'
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
-    </>
-  );
+	return (
+		<>
+			<Hero />
+			<Achievements />
+			<BestSellers />
+		</>
+	)
 }
