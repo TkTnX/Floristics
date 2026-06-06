@@ -1,4 +1,11 @@
-import { Achievements, BestSellers, Hero } from '@/widgets'
+import {
+	Achievements,
+	AchievementsTwo,
+	BestSellers,
+	Feedback,
+	Hero,
+	Sales
+} from '@/widgets'
 
 export default function Home() {
 	return (
@@ -6,6 +13,9 @@ export default function Home() {
 			<Hero />
 			<Achievements />
 			<BestSellers />
+			<AchievementsTwo />
+			<Sales />
+			<Feedback />
 		</>
 	)
 }

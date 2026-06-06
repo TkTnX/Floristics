@@ -6,7 +6,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-export const BestSellersList = () => {
+export const SalesList = () => {
 	return (
 		<>
 			<Swiper
@@ -20,8 +20,8 @@ export const BestSellersList = () => {
 				}}
 				className='mt-7.5 flex'
 				navigation={{
-					nextEl: '.bestSellers__next-button',
-					prevEl: '.bestSellers__prev-button'
+					nextEl: '.sales__next-button',
+					prevEl: '.sales__prev-button'
 				}}
 			>
 				<SwiperSlide>
@@ -46,10 +46,10 @@ export const BestSellersList = () => {
 					<Product />
 				</SwiperSlide>
 			</Swiper>
-			<button className='bestSellers__prev-button absolute bottom-1/2 left-0 z-2 flex h-17.5 w-17.5 items-center justify-center rounded-full bg-white disabled:opacity-50'>
+			<button className='sales__prev-button absolute bottom-1/2 left-0 z-2 flex h-17.5 w-17.5 items-center justify-center rounded-full bg-white disabled:opacity-50'>
 				<ChevronLeft />
 			</button>
-			<button className='bestSellers__next-button absolute right-0 bottom-1/2 z-2 flex h-17.5 w-17.5 items-center justify-center rounded-full bg-white disabled:opacity-50'>
+			<button className='sales__next-button absolute right-0 bottom-1/2 z-2 flex h-17.5 w-17.5 items-center justify-center rounded-full bg-white disabled:opacity-50'>
 				<ChevronRight />
 			</button>
 		</>
