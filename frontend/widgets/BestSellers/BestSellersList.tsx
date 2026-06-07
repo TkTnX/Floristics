@@ -25,7 +25,7 @@ export const BestSellersList = () => {
 				}}
 			>
 				<SwiperSlide>
-					<Product />
+					<Product  />
 				</SwiperSlide>
 				<SwiperSlide>
 					<Product />

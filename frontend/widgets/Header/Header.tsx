@@ -22,7 +22,7 @@ export const Header = () => {
 						</button>
 					</div>
 					<div className='flex items-center gap-3.5 lg:gap-0'>
-						<button className='lg:hidden h-2.75 w-4 flex-col justify-between flex'>
+						<button className='flex h-2.75 w-4 flex-col justify-between lg:hidden'>
 							<span className='bg-bg-black h-px w-full'></span>
 							<span className='bg-bg-black h-px w-full'></span>
 							<span className='bg-bg-black h-px w-full'></span>
@@ -44,7 +44,7 @@ export const Header = () => {
 								<input
 									type='text'
 									placeholder='Поиск'
-									className='max-w-20 outline-none lg:max-w-full hidden sm:block'
+									className='hidden max-w-20 outline-none md:block lg:max-w-full'
 								/>
 							</label>
 						</form>

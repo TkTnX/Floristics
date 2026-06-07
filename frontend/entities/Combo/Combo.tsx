@@ -6,12 +6,12 @@ export const Combo = () => {
 	return (
 		<div>
 			<div className='border-b-bg-gold relative flex items-center justify-center border-b pb-6.5'>
-				<Product isCombo={true} className='px-0 lg:px-0' />
+				<Product isCombo={true} className='w-full px-0 lg:px-0' />
 				<Plus
 					className='text-bg-gold absolute top-1/3 left-1/2 z-2 -translate-1/2 -translate-y-1/2'
 					size={14}
 				/>
-				<Product isCombo={true} className='px-0 lg:px-0' />
+				<Product isCombo={true} className='w-full px-0 lg:px-0' />
 			</div>
 			<div className='mt-7.5 flex items-center justify-center gap-6'>
 				<div>

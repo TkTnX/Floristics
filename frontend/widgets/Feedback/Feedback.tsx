@@ -12,16 +12,16 @@ import Image from 'next/image'
 
 export const Feedback = () => {
 	return (
-		<section className='bg-bg-black text-bg-light relative pt-17.5 pb-23.5'>
-			<h2 className='relative z-2 text-center text-3xl font-semibold'>
+		<section className='bg-bg-black text-bg-light relative px-5 pt-14 pb-15 sm:px-20 sm:pt-17.5 sm:pb-23.5'>
+			<h2 className='relative z-2 text-center text-xl font-semibold sm:text-3xl'>
 				Красивый букет — лучший подарок!
 			</h2>
-			<p className='relative z-2 mt-4 text-center text-lg'>
+			<p className='relative z-2 mt-4 hidden text-center text-lg md:block'>
 				Быстрый подбор (мы подберём вам идеальный вариант)
 			</p>
-			<form className='relative z-1 mt-11 flex items-center justify-center gap-2.5'>
+			<form className='relative z-1 mt-11 flex grid-cols-3 flex-col items-center justify-center gap-2.5 sm:grid sm:flex-row lg:flex'>
 				<Select>
-					<SelectTrigger className='text-text-grey h-15! w-67.5'>
+					<SelectTrigger className='text-text-grey h-15! w-full lg:w-67.5'>
 						<div className='flex flex-col items-start'>
 							<span className='text-xs'>Цветок</span>
 							<SelectValue />
@@ -36,7 +36,7 @@ export const Feedback = () => {
 					</SelectContent>
 				</Select>
 				<Select>
-					<SelectTrigger className='text-text-grey h-15! w-67.5'>
+					<SelectTrigger className='text-text-grey h-15! w-full lg:w-67.5'>
 						<div className='flex flex-col items-start'>
 							<span className='text-xs'>Событие</span>
 							<SelectValue />
@@ -55,7 +55,7 @@ export const Feedback = () => {
 					</SelectContent>
 				</Select>
 				<Select>
-					<SelectTrigger className='text-text-grey h-15! w-67.5'>
+					<SelectTrigger className='text-text-grey h-15! w-full lg:w-67.5'>
 						<div className='flex flex-col items-start'>
 							<span className='text-xs'>Бюджет</span>
 							<SelectValue />
@@ -70,7 +70,7 @@ export const Feedback = () => {
 						</SelectGroup>
 					</SelectContent>
 				</Select>
-				<Button className='bg-bg-gold h-15 text-white'>
+				<Button className='bg-bg-gold col-span-3 h-15 w-full text-white'>
 					Подобрать
 				</Button>
 			</form>

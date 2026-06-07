@@ -1,4 +1,4 @@
-import { Combo } from '@/entities'
+import { CombosList } from './CombosList'
 
 export const Combos = () => {
 	return (
@@ -7,10 +7,7 @@ export const Combos = () => {
 				<h2 className='text-center text-3xl font-semibold'>
 					Вместе дешевле
 				</h2>
-				<div className='flex items-center justify-center gap-2.5 mt-5.5'>
-					<Combo />
-					<Combo />
-				</div>
+				<CombosList/> 
 			</div>
 		</section>
 	)

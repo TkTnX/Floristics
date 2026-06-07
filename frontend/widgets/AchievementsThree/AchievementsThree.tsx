@@ -2,14 +2,14 @@ import Image from 'next/image'
 
 export const AchievementsThree = () => {
 	return (
-		<section className='relative mx-auto flex max-w-295.75 flex-col items-end gap-2 px-3 pt-20 pb-22.5 sm:flex-row lg:items-start lg:gap-18'>
+		<section className='relative mx-auto flex max-w-295.75 flex-col gap-5 px-3 pt-20 pb-22.5 sm:flex-row lg:items-end lg:items-start lg:gap-18'>
 			<div className=''>
 				<p className='max-w-138.25 text-xl leading-[150%] sm:pl-12'>
 					Цветы – это не просто подарок по поводу, это-еще один способ
 					подчеркнуть вашу уникальность.
 				</p>
-				<div className='flex items-start gap-29.5'>
-					<div className='mt-26'>
+				<div className='flex items-start gap-5 lg:gap-29.5'>
+					<div className='lg:mt-26'>
 						<div>
 							<Image
 								src={'/images/achievements-5.jpg'}
@@ -87,7 +87,7 @@ export const AchievementsThree = () => {
 					</div>
 				</div>
 			</div>
-			<div className=''>
+			<div className='flex gap-5 lg:block'>
 				<div>
 					<Image
 						src={'/images/achievements-9.jpg'}
@@ -103,7 +103,7 @@ export const AchievementsThree = () => {
 						</p>
 					</div>
 				</div>
-				<div className='mt-19'>
+				<div className='lg:mt-19'>
 					<Image
 						src={'/images/achievements-10.jpg'}
 						width={307}

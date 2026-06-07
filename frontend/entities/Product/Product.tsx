@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 interface Props {
 	className?: string
-	isCombo: boolean
+	isCombo?: boolean
 }
 
-export const Product = ({ className, isCombo }: Props) => {
+export const Product = ({ className, isCombo = false }: Props) => {
 	return (
 		<div
 			className={cn(
@@ -16,7 +16,7 @@ export const Product = ({ className, isCombo }: Props) => {
 				{ 'hover:bg-transparent hover:shadow-none': isCombo }
 			)}
 		>
-			<div className='flex h-65 items-center justify-center bg-white px-5.5 lg:h-82.5'>
+			<div className='flex h-65 items-center justify-center bg-white sm:px-5.5 lg:h-82.5'>
 				<Image
 					src={'/images/flowers/01.jpg'}
 					width={200}

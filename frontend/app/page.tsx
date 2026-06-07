@@ -13,14 +13,14 @@ import {
 export default function Home() {
 	return (
 		<>
-			<Hero />
-			<Achievements />
-			<BestSellers />
-			<AchievementsTwo />
-			<Sales />
-			<Feedback />
-			<Combos />
-			<AchievementsThree />
+			{/* <Hero /> */}
+			{/* <Achievements /> */}
+			{/* <BestSellers /> */}
+			{/* <AchievementsTwo /> */}
+			{/* <Sales /> */}
+			{/* <Feedback /> */}
+			{/* <Combos /> */}
+			{/* <AchievementsThree /> */}
 			<Reviews />
 		</>
 	)
