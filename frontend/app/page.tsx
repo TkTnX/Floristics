@@ -1,4 +1,5 @@
 import {
+	AboutDelivery,
 	Achievements,
 	AchievementsThree,
 	AchievementsTwo,
@@ -6,6 +7,7 @@ import {
 	Combos,
 	Feedback,
 	Hero,
+	Portal,
 	Reviews,
 	Sales
 } from '@/widgets'
@@ -13,15 +15,17 @@ import {
 export default function Home() {
 	return (
 		<>
-			{/* <Hero /> */}
-			{/* <Achievements /> */}
-			{/* <BestSellers /> */}
-			{/* <AchievementsTwo /> */}
-			{/* <Sales /> */}
-			{/* <Feedback /> */}
-			{/* <Combos /> */}
-			{/* <AchievementsThree /> */}
+			<Hero />
+			<Achievements />
+			<BestSellers />
+			<AchievementsTwo />
+			<Sales />
+			<Feedback />
+			<Combos />
+			<AchievementsThree />
 			<Reviews />
+			<Portal />
+			<AboutDelivery />
 		</>
 	)
 }

@@ -70,7 +70,7 @@ export const Feedback = () => {
 						</SelectGroup>
 					</SelectContent>
 				</Select>
-				<Button className='bg-bg-gold col-span-3 h-15 w-full text-white'>
+				<Button className='bg-bg-gold col-span-3 h-15 w-full text-white lg:w-fit'>
 					Подобрать
 				</Button>
 			</form>

@@ -1,4 +1,3 @@
-import { Review } from '@/entities'
 import { ReviewsList } from './ReviewsList'
 
 export const Reviews = () => {
