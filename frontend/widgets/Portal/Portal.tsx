@@ -9,8 +9,8 @@ export const Portal = () => {
 			</h2>
 			<div className='mt-8.5 flex items-center'>
 				<Post />
-				<Post />
-				<Post />
+				<Post className='hidden sm:block' />
+				<Post className={'hidden md:block'} />
 			</div>
 			<Button className='mx-auto mt-10 flex w-fit justify-center'>
 				Смотреть все

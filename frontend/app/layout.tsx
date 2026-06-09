@@ -1,56 +1,55 @@
-import type { Metadata } from "next";
-import localFont from 'next/font/local';
-import "./globals.css";
-import { Header } from "@/widgets";
-import { cn } from "@/shared/lib/utils";
-
+import type { Metadata } from 'next'
+import localFont from 'next/font/local'
+import './globals.css'
+import { Footer, Header } from '@/widgets'
+import { cn } from '@/shared/lib/utils'
 
 const fontMuseo = localFont({
-  src: [
-    {
-      path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_300.otf',
-      weight: '300',
-    },
-    {
-      path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_700.otf',
-      weight: '700',
-    },
-    {
-      path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_500.otf',
-      weight: '500',
-    },
-    {
-      path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_900.otf',
-      weight: '900',
-    },
-    {
-      path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_100.otf',
-      weight: '100',
-    },
-
-  ]
+	src: [
+		{
+			path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_300.otf',
+			weight: '300'
+		},
+		{
+			path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_700.otf',
+			weight: '700'
+		},
+		{
+			path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_500.otf',
+			weight: '500'
+		},
+		{
+			path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_900.otf',
+			weight: '900'
+		},
+		{
+			path: '../public/fonts/MuseoSansCyrl/MuseoSansCyrl_100.otf',
+			weight: '100'
+		}
+	]
 })
 
 export const metadata: Metadata = {
-  title: "DICENTRA | Выбирай сердцем",
-  description: "DICENTRA - Интернет-магазин цветов",
-};
+	title: 'DICENTRA | Выбирай сердцем',
+	description: 'DICENTRA - Интернет-магазин цветов'
+}
 
 export default function RootLayout({
-  children,
+	children
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
-  return (
-    <html
-      suppressHydrationWarning
-      lang="ru"
-      className={cn("h-full", "antialiased", fontMuseo.className)}
-    >
-      <body className="min-h-full flex flex-col overflow-x-hidden">
-        <Header />
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html
+			suppressHydrationWarning
+			lang='ru'
+			className={cn('h-full', 'antialiased', fontMuseo.className)}
+		>
+			<body className='flex min-h-full flex-col overflow-x-hidden'>
+				<Header />
+				{children}
+				<Footer />
+			</body>
+		</html>
+	)
 }
