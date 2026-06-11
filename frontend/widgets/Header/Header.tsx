@@ -21,6 +21,7 @@ export const Header = () => {
 							</p>
 						</button>
 					</div>
+					{/* TODO: Сделать меню */}
 					<div className='flex items-center gap-3.5 lg:gap-0'>
 						<button className='flex h-2.75 w-4 flex-col justify-between lg:hidden'>
 							<span className='bg-bg-black h-px w-full'></span>
