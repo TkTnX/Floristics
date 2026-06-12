@@ -14,12 +14,12 @@ import { PrismaModule } from './api/prisma/prisma.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    PrismaModule,
     ProductModule,
     UserModule,
     ComboModule,
     PostModule,
     ReviewModule,
-    PrismaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
