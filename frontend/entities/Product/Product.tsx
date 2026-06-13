@@ -1,13 +1,15 @@
 import { Button } from '@/shared'
 import { cn } from '@/shared/lib/utils'
+import { IProduct } from '@/shared/types'
 import Image from 'next/image'
 
 interface Props {
 	className?: string
 	isCombo?: boolean
+	product: IProduct
 }
 
-export const Product = ({ className, isCombo = false }: Props) => {
+export const Product = ({ className, isCombo = false, product }: Props) => {
 	return (
 		<div
 			className={cn(
@@ -16,16 +18,42 @@ export const Product = ({ className, isCombo = false }: Props) => {
 				{ 'hover:bg-transparent hover:shadow-none': isCombo }
 			)}
 		>
+			{product.discount && (
+				<p className='text-bg-gold absolute top-5 left-5 flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold'>
+					<Image
+						src={'/images/icons/discount-outline.svg'}
+						fill
+						alt='Обводка'
+					/>
+					-{product.discount}%
+				</p>
+			)}
 			<div className='flex h-65 items-center justify-center bg-white sm:px-5.5 lg:h-82.5'>
 				<Image
-					src={'/images/flowers/01.jpg'}
+					src={product.images[0]}
 					width={200}
 					height={200}
-					alt='Flowers'
+					alt={product.title}
 				/>
 			</div>
-			<h6 className='mt-4.5 text-center'>Букет №11 Роз спрей микс</h6>
-			<p className='mt-3.25 text-center text-xl font-bold'>700 руб</p>
+			<h6 className='mt-4.5 text-center'>{product.title}</h6>
+			{/* TODO: CONVERT PRICE */}
+			<div className='mt-3.25 flex items-center justify-center gap-3 text-xl'>
+				{product.discount && (
+					<p className='text-bg-black font-semibold line-through opacity-50'>
+						{product.price}
+					</p>
+				)}
+				<p className='text-center font-bold'>
+					{product.discount
+						? Math.floor(
+								product.price -
+									(product.price * product.discount) / 100
+							)
+						: product.price}{' '}
+					руб
+				</p>
+			</div>
 			{!isCombo && (
 				<div
 					className={cn(

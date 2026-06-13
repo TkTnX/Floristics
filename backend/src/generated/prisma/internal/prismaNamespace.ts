@@ -1196,7 +1196,8 @@ export const UserScalarFieldEnum = {
   id: 'id',
   fio: 'fio',
   emails: 'emails',
-  phones: 'phones'
+  phones: 'phones',
+  createdAt: 'createdAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1207,7 +1208,8 @@ export const AddressScalarFieldEnum = {
   city: 'city',
   street: 'street',
   isMain: 'isMain',
-  userId: 'userId'
+  userId: 'userId',
+  createdAt: 'createdAt'
 } as const
 
 export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
@@ -1239,10 +1241,10 @@ export const ProductScalarFieldEnum = {
   price: 'price',
   size: 'size',
   color: 'color',
-  structure: 'structure',
   event: 'event',
   images: 'images',
-  discount: 'discount'
+  discount: 'discount',
+  rating: 'rating'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -1253,7 +1255,8 @@ export const CartItemScalarFieldEnum = {
   quantity: 'quantity',
   productId: 'productId',
   comboId: 'comboId',
-  cartId: 'cartId'
+  cartId: 'cartId',
+  createdAt: 'createdAt'
 } as const
 
 export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typeof CartItemScalarFieldEnum]
@@ -1262,7 +1265,8 @@ export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typ
 export const CartScalarFieldEnum = {
   id: 'id',
   totalPrice: 'totalPrice',
-  userId: 'userId'
+  userId: 'userId',
+  createdAt: 'createdAt'
 } as const
 
 export type CartScalarFieldEnum = (typeof CartScalarFieldEnum)[keyof typeof CartScalarFieldEnum]
@@ -1275,7 +1279,8 @@ export const ReviewScalarFieldEnum = {
   text: 'text',
   image: 'image',
   userId: 'userId',
-  productId: 'productId'
+  productId: 'productId',
+  createdAt: 'createdAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -1285,7 +1290,8 @@ export const PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
-  preview: 'preview'
+  preview: 'preview',
+  createdAt: 'createdAt'
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
@@ -1340,6 +1346,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 

@@ -16,6 +16,8 @@ model User {
   addresses Address[]
   reviews Review[]
   cart Cart?
+ createdAt DateTime @default(now())
+
 }
 
 model Address {
@@ -26,6 +28,8 @@ model Address {
 
   user User @relation(fields: [userId], references: [id])
   userId String
+ createdAt DateTime @default(now())
+
 }
 
 model Flower {
@@ -44,6 +48,7 @@ model Packaging {
   image String
 
   products Product[]
+
 }
 
 model Product {
@@ -55,6 +60,7 @@ model Product {
   event String?
   images String[]
   discount Int?
+  rating Int @default(0)
 
   flowers Flower[]
   packaging Packaging[]
@@ -75,6 +81,9 @@ model CartItem {
 
   cart Cart @relation(fields: [cartId], references: [id])
   cartId String
+
+ createdAt DateTime @default(now())
+
 }
 
 model Cart {
@@ -85,6 +94,9 @@ model Cart {
 
   user User @relation(fields: [userId], references: [id])
   userId String @unique
+
+ createdAt DateTime @default(now())
+
 }
 
 model Review {
@@ -100,6 +112,8 @@ model Review {
   product Product @relation(fields: [productId], references: [id])
   productId String
 
+  createdAt DateTime @default(now())
+
 }
 
 model Post {
@@ -107,14 +121,14 @@ model Post {
   title String
   content String
   preview String
+
+  createdAt DateTime @default(now())
+
 }
 
 model Combo {
   id String @id @default(uuid())
-price Int
-products Product[]
-
-
-cartItem CartItem[]
-
-  }
+  price Int
+  products Product[]
+  cartItem CartItem[]
+}

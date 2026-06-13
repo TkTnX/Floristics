@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import { Footer, Header } from '@/widgets'
-import { cn } from '@/shared/lib/utils'
-
+import { cn, Provider } from '@/shared'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 const fontMuseo = localFont({
 	src: [
 		{
@@ -45,11 +45,13 @@ export default function RootLayout({
 			lang='ru'
 			className={cn('h-full', 'antialiased', fontMuseo.className)}
 		>
-			<body className='flex min-h-full flex-col overflow-x-hidden'>
-				<Header />
-				{children}
-				<Footer />
-			</body>
+			<Provider>
+				<body className='flex min-h-full flex-col overflow-x-hidden'>
+					<Header />
+					{children}
+					<Footer />
+				</body>
+			</Provider>
 		</html>
 	)
 }

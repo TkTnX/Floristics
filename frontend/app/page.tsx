@@ -21,7 +21,7 @@ export default function Home() {
 			<AchievementsTwo />
 			<Sales />
 			<Feedback />
-			<Combos />
+			{/* <Combos /> */}
 			<AchievementsThree />
 			<Reviews />
 			<Portal />

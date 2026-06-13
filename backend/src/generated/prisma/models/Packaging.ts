@@ -208,6 +208,7 @@ export type PackagingWhereInput = {
   name?: Prisma.StringFilter<"Packaging"> | string
   price?: Prisma.IntFilter<"Packaging"> | number
   image?: Prisma.StringFilter<"Packaging"> | string
+  products?: Prisma.ProductListRelationFilter
 }
 
 export type PackagingOrderByWithRelationInput = {
@@ -215,6 +216,7 @@ export type PackagingOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   price?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  products?: Prisma.ProductOrderByRelationAggregateInput
 }
 
 export type PackagingWhereUniqueInput = Prisma.AtLeast<{
@@ -225,6 +227,7 @@ export type PackagingWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Packaging"> | string
   price?: Prisma.IntFilter<"Packaging"> | number
   image?: Prisma.StringFilter<"Packaging"> | string
+  products?: Prisma.ProductListRelationFilter
 }, "id">
 
 export type PackagingOrderByWithAggregationInput = {
@@ -254,6 +257,7 @@ export type PackagingCreateInput = {
   name: string
   price: number
   image: string
+  products?: Prisma.ProductCreateNestedManyWithoutPackagingInput
 }
 
 export type PackagingUncheckedCreateInput = {
@@ -261,6 +265,7 @@ export type PackagingUncheckedCreateInput = {
   name: string
   price: number
   image: string
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutPackagingInput
 }
 
 export type PackagingUpdateInput = {
@@ -268,6 +273,7 @@ export type PackagingUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.IntFieldUpdateOperationsInput | number
   image?: Prisma.StringFieldUpdateOperationsInput | string
+  products?: Prisma.ProductUpdateManyWithoutPackagingNestedInput
 }
 
 export type PackagingUncheckedUpdateInput = {
@@ -275,6 +281,7 @@ export type PackagingUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.IntFieldUpdateOperationsInput | number
   image?: Prisma.StringFieldUpdateOperationsInput | string
+  products?: Prisma.ProductUncheckedUpdateManyWithoutPackagingNestedInput
 }
 
 export type PackagingCreateManyInput = {
@@ -327,6 +334,149 @@ export type PackagingSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
 }
 
+export type PackagingListRelationFilter = {
+  every?: Prisma.PackagingWhereInput
+  some?: Prisma.PackagingWhereInput
+  none?: Prisma.PackagingWhereInput
+}
+
+export type PackagingOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type PackagingCreateNestedManyWithoutProductsInput = {
+  create?: Prisma.XOR<Prisma.PackagingCreateWithoutProductsInput, Prisma.PackagingUncheckedCreateWithoutProductsInput> | Prisma.PackagingCreateWithoutProductsInput[] | Prisma.PackagingUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.PackagingCreateOrConnectWithoutProductsInput | Prisma.PackagingCreateOrConnectWithoutProductsInput[]
+  connect?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+}
+
+export type PackagingUncheckedCreateNestedManyWithoutProductsInput = {
+  create?: Prisma.XOR<Prisma.PackagingCreateWithoutProductsInput, Prisma.PackagingUncheckedCreateWithoutProductsInput> | Prisma.PackagingCreateWithoutProductsInput[] | Prisma.PackagingUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.PackagingCreateOrConnectWithoutProductsInput | Prisma.PackagingCreateOrConnectWithoutProductsInput[]
+  connect?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+}
+
+export type PackagingUpdateManyWithoutProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.PackagingCreateWithoutProductsInput, Prisma.PackagingUncheckedCreateWithoutProductsInput> | Prisma.PackagingCreateWithoutProductsInput[] | Prisma.PackagingUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.PackagingCreateOrConnectWithoutProductsInput | Prisma.PackagingCreateOrConnectWithoutProductsInput[]
+  upsert?: Prisma.PackagingUpsertWithWhereUniqueWithoutProductsInput | Prisma.PackagingUpsertWithWhereUniqueWithoutProductsInput[]
+  set?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  disconnect?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  delete?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  connect?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  update?: Prisma.PackagingUpdateWithWhereUniqueWithoutProductsInput | Prisma.PackagingUpdateWithWhereUniqueWithoutProductsInput[]
+  updateMany?: Prisma.PackagingUpdateManyWithWhereWithoutProductsInput | Prisma.PackagingUpdateManyWithWhereWithoutProductsInput[]
+  deleteMany?: Prisma.PackagingScalarWhereInput | Prisma.PackagingScalarWhereInput[]
+}
+
+export type PackagingUncheckedUpdateManyWithoutProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.PackagingCreateWithoutProductsInput, Prisma.PackagingUncheckedCreateWithoutProductsInput> | Prisma.PackagingCreateWithoutProductsInput[] | Prisma.PackagingUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.PackagingCreateOrConnectWithoutProductsInput | Prisma.PackagingCreateOrConnectWithoutProductsInput[]
+  upsert?: Prisma.PackagingUpsertWithWhereUniqueWithoutProductsInput | Prisma.PackagingUpsertWithWhereUniqueWithoutProductsInput[]
+  set?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  disconnect?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  delete?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  connect?: Prisma.PackagingWhereUniqueInput | Prisma.PackagingWhereUniqueInput[]
+  update?: Prisma.PackagingUpdateWithWhereUniqueWithoutProductsInput | Prisma.PackagingUpdateWithWhereUniqueWithoutProductsInput[]
+  updateMany?: Prisma.PackagingUpdateManyWithWhereWithoutProductsInput | Prisma.PackagingUpdateManyWithWhereWithoutProductsInput[]
+  deleteMany?: Prisma.PackagingScalarWhereInput | Prisma.PackagingScalarWhereInput[]
+}
+
+export type PackagingCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  price: number
+  image: string
+}
+
+export type PackagingUncheckedCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  price: number
+  image: string
+}
+
+export type PackagingCreateOrConnectWithoutProductsInput = {
+  where: Prisma.PackagingWhereUniqueInput
+  create: Prisma.XOR<Prisma.PackagingCreateWithoutProductsInput, Prisma.PackagingUncheckedCreateWithoutProductsInput>
+}
+
+export type PackagingUpsertWithWhereUniqueWithoutProductsInput = {
+  where: Prisma.PackagingWhereUniqueInput
+  update: Prisma.XOR<Prisma.PackagingUpdateWithoutProductsInput, Prisma.PackagingUncheckedUpdateWithoutProductsInput>
+  create: Prisma.XOR<Prisma.PackagingCreateWithoutProductsInput, Prisma.PackagingUncheckedCreateWithoutProductsInput>
+}
+
+export type PackagingUpdateWithWhereUniqueWithoutProductsInput = {
+  where: Prisma.PackagingWhereUniqueInput
+  data: Prisma.XOR<Prisma.PackagingUpdateWithoutProductsInput, Prisma.PackagingUncheckedUpdateWithoutProductsInput>
+}
+
+export type PackagingUpdateManyWithWhereWithoutProductsInput = {
+  where: Prisma.PackagingScalarWhereInput
+  data: Prisma.XOR<Prisma.PackagingUpdateManyMutationInput, Prisma.PackagingUncheckedUpdateManyWithoutProductsInput>
+}
+
+export type PackagingScalarWhereInput = {
+  AND?: Prisma.PackagingScalarWhereInput | Prisma.PackagingScalarWhereInput[]
+  OR?: Prisma.PackagingScalarWhereInput[]
+  NOT?: Prisma.PackagingScalarWhereInput | Prisma.PackagingScalarWhereInput[]
+  id?: Prisma.StringFilter<"Packaging"> | string
+  name?: Prisma.StringFilter<"Packaging"> | string
+  price?: Prisma.IntFilter<"Packaging"> | number
+  image?: Prisma.StringFilter<"Packaging"> | string
+}
+
+export type PackagingUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  image?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type PackagingUncheckedUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  image?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type PackagingUncheckedUpdateManyWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  image?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+
+/**
+ * Count Type PackagingCountOutputType
+ */
+
+export type PackagingCountOutputType = {
+  products: number
+}
+
+export type PackagingCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  products?: boolean | PackagingCountOutputTypeCountProductsArgs
+}
+
+/**
+ * PackagingCountOutputType without action
+ */
+export type PackagingCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PackagingCountOutputType
+   */
+  select?: Prisma.PackagingCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PackagingCountOutputType without action
+ */
+export type PackagingCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductWhereInput
+}
 
 
 export type PackagingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -334,6 +484,8 @@ export type PackagingSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   name?: boolean
   price?: boolean
   image?: boolean
+  products?: boolean | Prisma.Packaging$productsArgs<ExtArgs>
+  _count?: boolean | Prisma.PackagingCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["packaging"]>
 
 export type PackagingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -358,10 +510,18 @@ export type PackagingSelectScalar = {
 }
 
 export type PackagingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "price" | "image", ExtArgs["result"]["packaging"]>
+export type PackagingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  products?: boolean | Prisma.Packaging$productsArgs<ExtArgs>
+  _count?: boolean | Prisma.PackagingCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type PackagingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type PackagingIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $PackagingPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Packaging"
-  objects: {}
+  objects: {
+    products: Prisma.$ProductPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
@@ -761,6 +921,7 @@ readonly fields: PackagingFieldRefs;
  */
 export interface Prisma__PackagingClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  products<T extends Prisma.Packaging$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Packaging$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -811,6 +972,10 @@ export type PackagingFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
+  /**
    * Filter, which Packaging to fetch.
    */
   where: Prisma.PackagingWhereUniqueInput
@@ -829,6 +994,10 @@ export type PackagingFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensi
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
+  /**
    * Filter, which Packaging to fetch.
    */
   where: Prisma.PackagingWhereUniqueInput
@@ -846,6 +1015,10 @@ export type PackagingFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the Packaging
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
   /**
    * Filter, which Packaging to fetch.
    */
@@ -895,6 +1068,10 @@ export type PackagingFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
+  /**
    * Filter, which Packaging to fetch.
    */
   where?: Prisma.PackagingWhereInput
@@ -942,6 +1119,10 @@ export type PackagingFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Packaging
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
   /**
    * Filter, which Packagings to fetch.
    */
@@ -991,6 +1172,10 @@ export type PackagingCreateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
+  /**
    * The data needed to create a Packaging.
    */
   data: Prisma.XOR<Prisma.PackagingCreateInput, Prisma.PackagingUncheckedCreateInput>
@@ -1038,6 +1223,10 @@ export type PackagingUpdateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Packaging
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
   /**
    * The data needed to update a Packaging.
    */
@@ -1105,6 +1294,10 @@ export type PackagingUpsertArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
+  /**
    * The filter to search for the Packaging to update in case it exists.
    */
   where: Prisma.PackagingWhereUniqueInput
@@ -1131,6 +1324,10 @@ export type PackagingDeleteArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
+  /**
    * Filter which Packaging to delete.
    */
   where: Prisma.PackagingWhereUniqueInput
@@ -1151,6 +1348,30 @@ export type PackagingDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
+ * Packaging.products
+ */
+export type Packaging$productsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Product
+   */
+  select?: Prisma.ProductSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Product
+   */
+  omit?: Prisma.ProductOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductInclude<ExtArgs> | null
+  where?: Prisma.ProductWhereInput
+  orderBy?: Prisma.ProductOrderByWithRelationInput | Prisma.ProductOrderByWithRelationInput[]
+  cursor?: Prisma.ProductWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductScalarFieldEnum | Prisma.ProductScalarFieldEnum[]
+}
+
+/**
  * Packaging without action
  */
 export type PackagingDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1162,4 +1383,8 @@ export type PackagingDefaultArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Packaging
    */
   omit?: Prisma.PackagingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackagingInclude<ExtArgs> | null
 }
