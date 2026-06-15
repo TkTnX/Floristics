@@ -7,7 +7,7 @@ export const Combos = () => {
 				<h2 className='text-center text-3xl font-semibold'>
 					Вместе дешевле
 				</h2>
-				<CombosList/> 
+				<CombosList />
 			</div>
 		</section>
 	)

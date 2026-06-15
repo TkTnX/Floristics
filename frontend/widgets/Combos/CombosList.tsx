@@ -6,7 +6,12 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ErrorMessage, Skeleton, useCombos } from '@/shared'
 export const CombosList = () => {
+	const { useCombosQuery } = useCombos()
+	const { data, isPending, error } = useCombosQuery({ take: 8 })
+
+	if (error) return <ErrorMessage message={error} />
 	return (
 		<>
 			<Swiper
@@ -25,18 +30,17 @@ export const CombosList = () => {
 					prevEl: '.combos__prev-button'
 				}}
 			>
-				<SwiperSlide>
-					<Combo />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Combo />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Combo />
-				</SwiperSlide>
-				<SwiperSlide>
-					<Combo />
-				</SwiperSlide>
+				{isPending
+					? [...new Array(5)].map((_, index) => (
+							<SwiperSlide key={index}>
+								<Skeleton className='h-135.75 w-full' />
+							</SwiperSlide>
+						))
+					: data.map(combo => (
+							<SwiperSlide key={combo.id}>
+								<Combo combo={combo} />
+							</SwiperSlide>
+						))}
 			</Swiper>
 			<button className='combos__prev-button absolute bottom-1/2 left-0 z-2 flex h-17.5 w-17.5 items-center justify-center rounded-full bg-white disabled:opacity-50'>
 				<ChevronLeft />

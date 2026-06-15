@@ -6,12 +6,20 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { ErrorMessage, Skeleton, useProducts } from '@/shared'
+import { ErrorMessage, Skeleton, useCategoryStore, useProducts } from '@/shared'
 export const BestSellersList = () => {
+	const {category} = useCategoryStore()
 	const { useProductsQuery } = useProducts()
 	const { data, isPending, error } = useProductsQuery({
 		take: 8,
-		sortBy: JSON.stringify({ rating: 'desc' })
+		sortBy: JSON.stringify({ rating: 'desc' }),
+		where: JSON.stringify({
+			flowers: {
+				some: {
+					id: category
+				}
+			}
+		})
 	})
 
 	if (error) return <ErrorMessage message={error} />

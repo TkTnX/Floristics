@@ -1,7 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ComboService } from './combo.service';
+import { QueryType } from 'src/types';
 
-@Controller('combo')
+@Controller('combos')
 export class ComboController {
-  constructor(private readonly comboService: ComboService) {}
+  constructor(private readonly comboService: ComboService) { }
+  
+    @Get()
+    public get(@Query() query: QueryType) {
+      return this.comboService.get(query);
+    }
 }

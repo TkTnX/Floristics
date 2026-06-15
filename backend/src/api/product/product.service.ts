@@ -9,9 +9,14 @@ export class ProductService {
   public async get(query: QueryType) {
     const { where, take, sortBy } = query;
     const products = await this.prismaService.product.findMany({
-      where: where && JSON.parse(where),
+      where: {
+        ...JSON.parse(where || '{}'),
+      },
       take: Number(take),
       orderBy: sortBy && JSON.parse(sortBy),
+      include: {
+        flowers: true,
+      },
     });
 
     if (!products) throw new NotFoundException('Товары не найдены!');
