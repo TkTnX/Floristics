@@ -1,4 +1,6 @@
-import { ChevronDown, Moon, Navigation } from 'lucide-react'
+import { ChooseCity } from './ChooseCity'
+import { Currency } from './Currency'
+import { Moon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -17,16 +19,9 @@ export const HeaderTop = () => {
 							height={10}
 						/>
 					</button>
-					<button className='text-bg-gold flex items-center gap-1.5 text-xs font-semibold'>
-						<Navigation size={10} />
-						Москва
-					</button>
+					<ChooseCity />
 					<Link href={'/shops'}>Магазины</Link>
-					<button className='flex items-center gap-0.5'>
-						Валюта:
-						<span className='text-bg-gold'>RUB</span>
-						<ChevronDown size={14} />
-					</button>
+					<Currency />
 				</div>
 				<nav>
 					<ul className='flex items-center gap-7.5'>

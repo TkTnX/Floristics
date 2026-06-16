@@ -1,7 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ReviewService } from './review.service';
+import { QueryType } from 'src/types';
 
-@Controller('review')
+@Controller('reviews')
 export class ReviewController {
-  constructor(private readonly reviewService: ReviewService) {}
+  public constructor(private readonly reviewService: ReviewService) {}
+
+  @Get()
+  public get(@Query() query: QueryType) {
+    return this.reviewService.get(query);
+  }
 }

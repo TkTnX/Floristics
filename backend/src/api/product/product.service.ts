@@ -12,7 +12,7 @@ export class ProductService {
       where: {
         ...JSON.parse(where || '{}'),
       },
-      take: Number(take),
+      take: take && take,
       orderBy: sortBy && JSON.parse(sortBy),
       include: {
         flowers: true,

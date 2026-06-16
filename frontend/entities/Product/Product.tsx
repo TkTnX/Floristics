@@ -2,6 +2,7 @@ import { Button } from '@/shared'
 import { cn } from '@/shared/lib/utils'
 import { IProduct } from '@/shared/types'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Props {
 	className?: string
@@ -13,11 +14,15 @@ export const Product = ({ className, isCombo = false, product }: Props) => {
 	return (
 		<div
 			className={cn(
-				'group px-1.25 transition hover:bg-white hover:shadow-2xl lg:px-2.5',
+				'group relative px-1.25 transition hover:bg-white hover:shadow-2xl lg:px-2.5',
 				className,
 				{ 'hover:bg-transparent hover:shadow-none': isCombo }
 			)}
 		>
+			<Link
+				href={`/products/${product.id}`}
+				className='absolute inset-0'
+			></Link>
 			{product.discount && (
 				<p className='text-bg-gold absolute top-5 left-5 flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold'>
 					<Image
@@ -57,7 +62,7 @@ export const Product = ({ className, isCombo = false, product }: Props) => {
 			{!isCombo && (
 				<div
 					className={cn(
-						'mt-4.25 flex flex-col items-center pb-6.5 opacity-100 transition group-hover:opacity-100 lg:opacity-0'
+						'relative z-1 mt-4.25 flex flex-col items-center pb-6.5 opacity-100 transition group-hover:opacity-100 lg:opacity-0'
 					)}
 				>
 					<Button>В корзину</Button>

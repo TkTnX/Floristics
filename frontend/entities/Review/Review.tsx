@@ -1,6 +1,11 @@
+import { IReview } from '@/shared/types'
 import Image from 'next/image'
 
-export const Review = () => {
+interface Props {
+	review: IReview
+}
+
+export const Review = ({ review }: Props) => {
 	return (
 		<div className='bg-white pt-13 pr-5 pb-20 pl-10 sm:pr-16'>
 			<Image
@@ -8,14 +13,12 @@ export const Review = () => {
 				width={51}
 				height={32}
 				alt='Quote'
-				className=''
 			/>
 			<div className='sm:pl-18.75'>
-				<p className='leading-[150%] font-light'>
-					Благодарю за быстрое и качественное оформление и доставку
-					цветов, лилии превосходны!
-				</p>
-				<h6 className='mt-3.75 text-lg font-bold'>Анжела Романченко</h6>
+				<p className='leading-[150%] font-light'>{review.text}</p>
+				<h6 className='mt-3.75 text-lg font-bold'>
+					{review.user.fio.split(' ').slice(0, 2).join(' ')}
+				</h6>
 			</div>
 		</div>
 	)

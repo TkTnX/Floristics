@@ -1,8 +1,9 @@
-import { ChevronDown, Phone, Search, UserIcon } from 'lucide-react'
+import { ChevronDown, Phone, UserIcon } from 'lucide-react'
 import { HeaderTop } from './HeaderTop'
 import Image from 'next/image'
 import Link from 'next/link'
 import { NavMenu } from './NavMenu'
+import { Search } from './Search'
 
 export const Header = () => {
 	return (
@@ -39,16 +40,7 @@ export const Header = () => {
 						</Link>
 					</div>
 					<div className='flex items-center gap-5 md:gap-10'>
-						<form className=''>
-							<label className='flex items-center gap-1.5'>
-								<Search strokeWidth={1} />
-								<input
-									type='text'
-									placeholder='Поиск'
-									className='hidden max-w-20 outline-none md:block lg:max-w-full'
-								/>
-							</label>
-						</form>
+						<Search />
 						<Link
 							className='hidden items-center gap-2 text-sm font-light lg:flex'
 							href={'/profile'}
