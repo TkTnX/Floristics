@@ -1,9 +1,10 @@
-import { ChevronDown, Phone, UserIcon } from 'lucide-react'
+import { ChevronDown, Phone } from 'lucide-react'
 import { HeaderTop } from './HeaderTop'
 import Image from 'next/image'
 import Link from 'next/link'
 import { NavMenu } from './NavMenu'
 import { Search } from './Search'
+import { UserButton } from '@/widgets'
 
 export const Header = () => {
 	return (
@@ -41,13 +42,7 @@ export const Header = () => {
 					</div>
 					<div className='flex items-center gap-5 md:gap-10'>
 						<Search />
-						<Link
-							className='hidden items-center gap-2 text-sm font-light lg:flex'
-							href={'/profile'}
-						>
-							<UserIcon strokeWidth={1} />
-							Личный кабинет
-						</Link>
+						<UserButton />
 						<Link
 							className='flex items-center gap-1.5'
 							href={'/cart'}
@@ -59,7 +54,7 @@ export const Header = () => {
 								alt='Корзина'
 							/>
 							<p className='bg-bg-black flex h-7 w-7 items-center justify-center rounded-full text-xs text-white lg:h-9 lg:w-9.5 lg:text-base'>
-								89
+								0
 							</p>
 						</Link>
 					</div>

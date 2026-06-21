@@ -5,3 +5,6 @@ export * from './select'
 export * from './errorMessage'
 export * from './skeleton'
 export * from './dropdown-menu'
+export * from './field'
+export * from './label'
+export * from "./separator"

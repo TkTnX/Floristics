@@ -27,7 +27,7 @@ export const Search = () => {
 					</div>
 				</button>
 			</DrawerTrigger>
-			<DrawerContent className='bg-bg-light'>
+			<DrawerContent className='bg-bg-light h-screen! max-h-screen!'>
 				<div className='relative z-2 container max-w-209.5! overflow-y-auto md:overflow-hidden'>
 					<DrawerHeader>
 						<form className='border-bg-gold flex items-center justify-between border-b'>
@@ -41,8 +41,8 @@ export const Search = () => {
 							<SearchIcon size={20} />
 						</form>
 					</DrawerHeader>
-					<div className='border-bg-gold flex h-full flex-col-reverse gap-7.5 border-b pb-5 sm:flex-row'>
-						<div className='border-bg-gold h-full flex-1 sm:border-r sm:pr-7'>
+					<div className='border-bg-gold  flex h-full flex-col-reverse gap-7.5 border-b pb-5 sm:flex-row'>
+						<div className='border-bg-gold h-full flex-1 sm:border-r sm:pr-7 '>
 							<ProductsList
 								setProductsCount={setProductsCount}
 								name={value}
