@@ -51,6 +51,13 @@ model Packaging {
 
 }
 
+model Category {
+  id String @id @default(uuid())
+  name String
+
+  products Product[]
+}
+
 model Product {
   id String @id @default(uuid())
   title String
@@ -67,6 +74,9 @@ model Product {
   reviews Review[]
   cartItem CartItem[]
  combo Combo[]
+
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId String
 }
 
 model CartItem {

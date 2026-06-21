@@ -8,6 +8,7 @@ import { PostModule } from './api/post/post.module';
 import { ReviewModule } from './api/review/review.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './api/prisma/prisma.module';
+import { CategoryModule } from './api/category/category.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PrismaModule } from './api/prisma/prisma.module';
     ComboModule,
     PostModule,
     ReviewModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

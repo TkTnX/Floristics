@@ -55,6 +55,7 @@ export const ModelName = {
   Address: 'Address',
   Flower: 'Flower',
   Packaging: 'Packaging',
+  Category: 'Category',
   Product: 'Product',
   CartItem: 'CartItem',
   Cart: 'Cart',
@@ -122,6 +123,14 @@ export const PackagingScalarFieldEnum = {
 export type PackagingScalarFieldEnum = (typeof PackagingScalarFieldEnum)[keyof typeof PackagingScalarFieldEnum]
 
 
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
 export const ProductScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -131,7 +140,8 @@ export const ProductScalarFieldEnum = {
   event: 'event',
   images: 'images',
   discount: 'discount',
-  rating: 'rating'
+  rating: 'rating',
+  categoryId: 'categoryId'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]

@@ -1,0 +1,8 @@
+import { axiosInstance } from "@/shared/lib"
+import { QueryType } from "@/shared/types"
+
+export async function getCategories(query?: QueryType) {
+    const { data } = await axiosInstance.get('categories', {params: query})
+
+    return data
+}

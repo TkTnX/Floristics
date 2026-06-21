@@ -1,26 +1,24 @@
-import { Global, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/api/prisma/prisma.service';
 import { QueryType } from 'src/types';
 
 @Injectable()
-export class ProductService {
+export class CategoryService {
   public constructor(private readonly prismaService: PrismaService) {}
 
   public async get(query: QueryType) {
     const { where, take, sortBy } = query;
-    const products = await this.prismaService.product.findMany({
-      where: {
-        ...JSON.parse(where || '{}'),
-      },
+    const categories = await this.prismaService.category.findMany({
+      where: where && JSON.parse(where),
       take: take && Number(take),
       orderBy: sortBy && JSON.parse(sortBy),
       include: {
-        flowers: true,
+        _count: { select: { products: true } },
       },
     });
 
-    if (!products) throw new NotFoundException('Товары не найдены!');
+    if (!categories) throw new NotFoundException('Категории не найдены!');
 
-    return products;
+    return categories;
   }
 }

@@ -38,6 +38,11 @@ export type Flower = Prisma.FlowerModel
  */
 export type Packaging = Prisma.PackagingModel
 /**
+ * Model Category
+ * 
+ */
+export type Category = Prisma.CategoryModel
+/**
  * Model Product
  * 
  */
