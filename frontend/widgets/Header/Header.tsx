@@ -8,12 +8,11 @@ import { PhoneDropdown } from './PhoneDropdown'
 
 export const Header = () => {
 	return (
-		<header className='relative z-999 bg-white'>
+		<header className='relative z-3 bg-white'>
 			<HeaderTop />
 			<div>
 				<div className='mx-auto flex max-w-250 items-center justify-between px-3 pt-2.5 pb-5.5'>
 					<PhoneDropdown />
-					{/* TODO: Сделать меню */}
 					<div className='flex items-center gap-3.5 lg:gap-0'>
 						<MobileMenu />
 						<Link href={'/'}>

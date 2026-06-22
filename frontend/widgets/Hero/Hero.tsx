@@ -66,7 +66,7 @@ export const Hero = () => {
 				</SwiperSlide>
 			
 			</Swiper>
-			<div className='absolute bottom-10 left-[32%]! z-10 hidden items-center justify-center  gap-4.5 md:flex xl:bottom-33.25'>
+			<div className='absolute bottom-10 left-[32%]! z-1 hidden items-center justify-center  gap-4.5 md:flex xl:bottom-33.25'>
 				<button className='hero__prev-button flex h-17.5 w-17.5 items-center justify-center rounded-full bg-white disabled:opacity-50'>
 					<ChevronLeft />
 				</button>

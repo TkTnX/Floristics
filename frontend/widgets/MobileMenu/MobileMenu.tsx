@@ -4,9 +4,10 @@ import {
 	DrawerContent,
 	DrawerTitle,
 	DrawerTrigger,
+	FOOTER_NAV_ITEMS,
 	NAV_ITEMS
 } from '@/shared'
-import { DeliveryTooltip, ChooseCity, UserButton } from '@/widgets'
+import { DeliveryTooltip, ChooseCity, UserButton, Currency } from '@/widgets'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -20,7 +21,7 @@ export const MobileMenu = () => {
 					<span className='bg-bg-black h-px w-full'></span>
 				</button>
 			</DrawerTrigger>
-			<DrawerContent className='pt-16 overflow-y-auto'>
+			<DrawerContent className='z-2 overflow-y-auto pt-16 w-full! max-w-screen! sm:max-w-100! sm:w-auto'>
 				<DeliveryTooltip isMobile={true} className='px-5 text-white' />
 				<div className='w-full px-5'>
 					<ChooseCity
@@ -58,8 +59,25 @@ export const MobileMenu = () => {
 						</p>
 						<p className='text-sm'>Создайте свой букет</p>
 					</div>
-                </Link>
-                <UserButton className='flex px-5 py-4.5' />
+				</Link>
+				<UserButton className='flex border-b border-[#f0eae7] px-5 py-4.5' />
+				<Currency
+					isMobile={true}
+					className='border-b border-[#f0eae7] px-5 py-4.5 font-light'
+				/>
+				<div className='w-full border-b border-[#f0eae7] px-5 pb-4.5'>
+					<p className='text-bg-gold mt-3.75 text-[10px] tracking-[0.03em] uppercase'>
+						СНГ
+					</p>
+					<p className='mt-1.75 text-sm'>+7(900)000-00-00</p>
+				</div>
+				<ul className='grid grid-cols-2 justify-between gap-2 text-xs font-light px-5 py-4.5'>
+					{FOOTER_NAV_ITEMS.map((item, index) => (
+						<li key={index}>
+							<Link href={item.href}>{item.label}</Link>
+						</li>
+					))}
+				</ul>
 				<DrawerTitle />
 			</DrawerContent>
 		</Drawer>

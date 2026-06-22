@@ -1,3 +1,4 @@
+import { FOOTER_NAV_ITEMS } from '@/shared'
 import { Navigation } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,18 +24,11 @@ export const Footer = () => {
 				<nav>
 					<ul className='flex flex-col gap-4.25 text-xs font-light'>
 						<li className='text-sm font-semibold'>Клиентам</li>
-						<li>
-							<Link href={'/delivery'}>Доставка и оплата</Link>
-						</li>
-						<li>
-							<Link href={'/contacts'}>Контакты</Link>
-						</li>
-						<li>
-							<Link href={'/refund'}>Замена и возврат</Link>
-						</li>
-						<li>
-							<Link href={'/sales'}>Акции</Link>
-						</li>
+						{FOOTER_NAV_ITEMS.map((item, index) => (
+							<li key={index}>
+								<Link href={item.href}>{item.label}</Link>
+							</li>
+						))}
 					</ul>
 					<div className='mt-7.5 flex items-center gap-1.75'>
 						<Image

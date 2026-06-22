@@ -28,3 +28,22 @@ export const NAV_ITEMS = [
 		href: '/sales'
 	}
 ]
+
+export const FOOTER_NAV_ITEMS = [
+	{
+		label: 'Доставка и оплата',
+		href: '/delivery'
+	},
+	{
+		label: 'Контакты',
+		href: '/contacts'
+	},
+	{
+		label: 'Замена и возврат',
+		href: '/refund'
+	},
+	{
+		label: 'Акции',
+		href: '/sales'
+	}
+]
