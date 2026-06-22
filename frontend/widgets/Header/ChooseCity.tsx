@@ -14,7 +14,13 @@ import { Navigation } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-export const ChooseCity = () => {
+
+interface Props {
+	className?: string
+	iconSize?: number
+}
+
+export const ChooseCity = ({className, iconSize=10}: Props) => {
 	const [open, setOpen] = useState(false)
 	const { setCity, city } = useInfoStore()
 
@@ -40,8 +46,12 @@ export const ChooseCity = () => {
 	return (
 		<Drawer open={open} onOpenChange={setOpen} direction='top'>
 			<DrawerTrigger asChild>
-				<button className='text-bg-gold flex items-center gap-1.5 text-xs font-semibold'>
-					<Navigation size={10} />
+				<button
+					className={cn(
+						'text-bg-gold flex items-center gap-1.5 text-xs font-semibold', className
+					)}
+				>
+					<Navigation size={iconSize} />
 					{city}
 				</button>
 			</DrawerTrigger>

@@ -1,7 +1,7 @@
+'use client'
+import { DeliveryTooltip } from './DeliveryTooltip'
 import { ChooseCity } from './ChooseCity'
 import { Currency } from './Currency'
-import { Moon } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export const HeaderTop = () => {
@@ -9,16 +9,7 @@ export const HeaderTop = () => {
 		<div className='bg-bg-black text-bg-light hidden lg:block'>
 			<div className='container flex items-center justify-between text-xs font-light'>
 				<div className='flex items-center gap-10'>
-					<button className='bg-button-pressed-bg-dark flex items-center gap-2.5 px-2.75 py-2 text-[13px]'>
-						<Moon size={14} className='stroke-bg-gold -mr-1.25' />
-						Ночная доставка
-						<Image
-							src={'/images/icons/info.svg'}
-							alt='Ночная доставка'
-							width={4}
-							height={10}
-						/>
-					</button>
+					<DeliveryTooltip />
 					<ChooseCity />
 					<Link href={'/shops'}>Магазины</Link>
 					<Currency />

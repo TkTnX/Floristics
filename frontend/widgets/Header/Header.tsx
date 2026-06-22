@@ -1,35 +1,21 @@
-import { ChevronDown, Phone } from 'lucide-react'
 import { HeaderTop } from './HeaderTop'
 import Image from 'next/image'
 import Link from 'next/link'
 import { NavMenu } from './NavMenu'
 import { Search } from './Search'
-import { UserButton } from '@/widgets'
+import { UserButton, MobileMenu } from '@/widgets'
+import { PhoneDropdown } from './PhoneDropdown'
 
 export const Header = () => {
 	return (
-		<header>
+		<header className='relative z-999 bg-white'>
 			<HeaderTop />
 			<div>
 				<div className='mx-auto flex max-w-250 items-center justify-between px-3 pt-2.5 pb-5.5'>
-					<div className='hidden items-start gap-2.5 lg:flex'>
-						<Phone size={20} />
-						<button className='text-left'>
-							<p className='flex items-center'>
-								+7(900)000-00-00 <ChevronDown size={14} />
-							</p>
-							<p className='text-bg-gold text-[13px]'>
-								Обратный звонок
-							</p>
-						</button>
-					</div>
+					<PhoneDropdown />
 					{/* TODO: Сделать меню */}
 					<div className='flex items-center gap-3.5 lg:gap-0'>
-						<button className='flex h-2.75 w-4 flex-col justify-between lg:hidden'>
-							<span className='bg-bg-black h-px w-full'></span>
-							<span className='bg-bg-black h-px w-full'></span>
-							<span className='bg-bg-black h-px w-full'></span>
-						</button>
+						<MobileMenu />
 						<Link href={'/'}>
 							<Image
 								src={'/images/icons/logo.svg'}

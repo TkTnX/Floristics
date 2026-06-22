@@ -8,3 +8,4 @@ export * from './dropdown-menu'
 export * from './field'
 export * from './label'
 export * from "./separator"
+export * from './tooltip'
