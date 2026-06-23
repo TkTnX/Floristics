@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { QueryType } from 'src/types';
 
@@ -9,5 +9,10 @@ export class CategoryController {
   @Get()
   public get(@Query() query: QueryType) {
     return this.categoryService.get(query);
+  }
+
+  @Get(":id")
+  public getById(@Param('id') id: string) {
+    return this.categoryService.getById(id);
   }
 }

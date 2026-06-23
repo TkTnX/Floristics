@@ -6,3 +6,9 @@ export async function getCategories(query?: QueryType) {
 
     return data
 }
+
+export async function getCategoryById(id: string) {
+    const { data } = await axiosInstance.get(`categories/${id}`)
+
+    return data
+}

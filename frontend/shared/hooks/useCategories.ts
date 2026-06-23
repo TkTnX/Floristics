@@ -1,4 +1,4 @@
-import { getCategories } from '@/shared/api'
+import { getCategories, getCategoryById } from '@/shared/api'
 import { ICategory, QueryType } from '@/shared/types'
 import { useQuery } from '@tanstack/react-query'
 
@@ -9,7 +9,14 @@ export function useCategories() {
 			queryFn: (): Promise<ICategory[]> => getCategories(name)
 		})
 
+	const useCategoryById = (id: string) =>
+		useQuery({
+			queryKey: ['category', id],
+			queryFn: (): Promise<ICategory> => getCategoryById(id)
+		})
+
 	return {
-		useCategoriesQuery
+		useCategoriesQuery,
+		useCategoryById
 	}
 }

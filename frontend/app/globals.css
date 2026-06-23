@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -68,6 +67,7 @@
 body {
 	font-family: var(--font-family);
 	color: var(--color-bg-black);
+	background: var(--color-bg-light);
 }
 
 .container {
