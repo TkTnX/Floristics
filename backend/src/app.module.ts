@@ -9,6 +9,9 @@ import { ReviewModule } from './api/review/review.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './api/prisma/prisma.module';
 import { CategoryModule } from './api/category/category.module';
+import { FlowerModule } from 'src/api/flower/flower.module';
+import { ColorModule } from './api/color/color.module';
+import { EventModule } from './api/event/event.module';
 
 @Module({
   imports: [
@@ -22,6 +25,9 @@ import { CategoryModule } from './api/category/category.module';
     PostModule,
     ReviewModule,
     CategoryModule,
+    FlowerModule,
+    ColorModule,
+    EventModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -38,7 +38,7 @@ export const SalesList = () => {
 								<Skeleton className='h-135.75 w-full' />
 							</SwiperSlide>
 						))
-					: data.map(product => (
+					: data.products.map(product => (
 							<SwiperSlide key={product.id}>
 								<Product product={product} />
 							</SwiperSlide>

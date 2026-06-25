@@ -11,3 +11,4 @@ export * from "./separator"
 export * from './tooltip'
 export * from './breadcrumbs'
 export * from './filterButton'
+export * from './pagination'

@@ -51,6 +51,21 @@ model Packaging {
 
 }
 
+model Color {
+  id String @id @default(uuid())
+  name String
+  hex String
+
+  products Product[]
+}
+
+model Event {
+  id String @id @default(uuid())
+  name String
+
+  products Product[]
+}
+
 model Category {
   id String @id @default(uuid())
   name String
@@ -63,7 +78,6 @@ model Product {
   title String
   price Int
   size String?
-  color String?
   event String?
   images String[]
   discount Int?
@@ -74,9 +88,11 @@ model Product {
   reviews Review[]
   cartItem CartItem[]
  combo Combo[]
-
   category Category @relation(fields: [categoryId], references: [id])
   categoryId String
+  color Color? @relation(fields: [colorId], references: [id])
+  colorId String?
+  events Event[]
 }
 
 model CartItem {

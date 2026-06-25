@@ -22,7 +22,7 @@ export const ProductsList = ({
 	})
 
 	useEffect(() => {
-		setProductsCount?.(data?.length || 0)
+		setProductsCount?.(data?.products.length || 0)
 	}, [data, setProductsCount])
 
 	if (error) return <ErrorMessage message={error} />
@@ -40,8 +40,8 @@ export const ProductsList = ({
 						<Skeleton className='h-55 w-full' />
 					</div>
 				))
-			) : data.length > 0 ? (
-				data
+			) : data.products.length > 0 ? (
+				data.products
 					.slice(0, 8)
 					.map(product =>
 						isSearch ? (

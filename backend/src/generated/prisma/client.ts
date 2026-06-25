@@ -60,6 +60,16 @@ export type Flower = Prisma.FlowerModel
  */
 export type Packaging = Prisma.PackagingModel
 /**
+ * Model Color
+ * 
+ */
+export type Color = Prisma.ColorModel
+/**
+ * Model Event
+ * 
+ */
+export type Event = Prisma.EventModel
+/**
  * Model Category
  * 
  */

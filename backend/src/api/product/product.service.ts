@@ -19,8 +19,14 @@ export class ProductService {
       },
     });
 
+    const total = await this.prismaService.product.count({
+      where: {
+        ...JSON.parse(where || '{}'),
+      },
+    });
+
     if (!products) throw new NotFoundException('Товары не найдены!');
 
-    return products;
+    return { products, totalPages: Math.ceil(total / Number(take)) || 1 };
   }
 }

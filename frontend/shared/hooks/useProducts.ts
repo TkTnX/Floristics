@@ -6,7 +6,7 @@ export function useProducts() {
 	const useProductsQuery = (query?: QueryType) =>
 		useQuery({
 			queryKey: ['products', query],
-			queryFn: (): Promise<IProduct[]> => getProducts(query)
+			queryFn: (): Promise<{products: IProduct[], totalPages: number}> => getProducts(query)
 		})
 
 	return {
