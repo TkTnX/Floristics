@@ -1,4 +1,5 @@
 import {
+	cn,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
@@ -6,16 +7,41 @@ import {
 	ErrorMessage,
 	FilterButton,
 	Skeleton,
-	useEvents
+	useEvents,
+	useFiltersStore,
+	useQueryFilters
 } from '@/shared'
+import { IEvent } from '@/shared/types'
+import { Check } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
 export const EventFilter = () => {
 	const { useEventsQuery } = useEvents()
 	const { data, isPending, error } = useEventsQuery()
+	const searchParams = useSearchParams()
+	const ids = searchParams.get('events')?.split(',') || []
+	const isSelected = (newId: string) => ids.find(id => newId === id)
+	const { events, setEvents } = useFiltersStore()
+	const { setQuery, removeQuery } = useQueryFilters()
+	const length = searchParams.get('events')?.split(',')?.length
+	const onClick = (event: IEvent) => {
+		if (isSelected(event.id)) {
+			setEvents(events.filter(i => i.id !== event.id))
+			removeQuery('events', event.id)
+		} else {
+			setEvents([...events, event])
+			setQuery('events', event.id)
+		}
+	}
+
+	// TODO: Весь повторяющийся функционал вынести в отдельный файл
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<FilterButton name='Событие' />
+				<FilterButton
+					className='text-nowrap'
+					name={`Событие ${length ? `(${length})` : ''}`}
+				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				{error ? (
@@ -27,12 +53,22 @@ export const EventFilter = () => {
 						</DropdownMenuItem>
 					))
 				) : (
-					data.map(flower => (
+					data.map(event => (
 						<DropdownMenuItem
-							className='cursor-pointer text-sm font-light'
-							key={flower.id}
+							onClick={() => onClick(event)}
+							className={cn(
+								'flex cursor-pointer items-center justify-between text-sm font-light',
+								isSelected(event.id) && 'text-bg-gold'
+							)}
+							key={event.id}
 						>
-							{flower.name}
+							{event.name}
+							{isSelected(event.id) && (
+								<Check
+									className='text-bg-gold'
+									strokeWidth={3}
+								/>
+							)}
 						</DropdownMenuItem>
 					))
 				)}

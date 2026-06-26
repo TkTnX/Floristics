@@ -22,10 +22,13 @@ export const FlowerFilter = () => {
 	const { useFlowersQuery } = useFlowers()
 	const { data, isPending, error } = useFlowersQuery()
 	const { setFlowers, flowers } = useFiltersStore()
+	const flowersIds = searchParams.get('flowers')?.split(',') || []
+	const isSelected = (id: string) =>
+		flowersIds.find(flowerId => flowerId === id)
+	const length = searchParams.get('flowers')?.split(',')?.length
 
 	const onClick = (flower: IFlower) => {
-		console.log(searchParams.get('flowers')?.includes(flower.id))
-		if (searchParams.get('flowers')?.includes(flower.id)) {
+		if (isSelected(flower.id)) {
 			setFlowers(flowers.filter(f => f.id !== flower.id))
 			removeQuery('flowers', flower.id)
 		} else {
@@ -37,7 +40,7 @@ export const FlowerFilter = () => {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<FilterButton name='Цветок' />
+				<FilterButton className='text-nowrap' name={`Цветок ${length ? `(${length})` : ''}`} />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				{error ? (
@@ -54,16 +57,12 @@ export const FlowerFilter = () => {
 							onClick={() => onClick(flower)}
 							className={cn(
 								'flex cursor-pointer items-center justify-between text-sm font-light',
-								searchParams
-									.get('flowers')
-									?.includes(flower.id) && 'text-bg-gold'
+								isSelected(flower.id) && 'text-bg-gold'
 							)}
 							key={flower.id}
 						>
 							{flower.name}
-							{searchParams
-								.get('flowers')
-								?.includes(flower.id) && (
+							{isSelected(flower.id) && (
 								<Check
 									className='text-bg-gold'
 									strokeWidth={3}

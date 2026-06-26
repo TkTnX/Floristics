@@ -1,4 +1,5 @@
 import {
+	cn,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
@@ -6,16 +7,41 @@ import {
 	ErrorMessage,
 	FilterButton,
 	Skeleton,
-	useColors
+	useColors,
+	useFiltersStore,
+	useQueryFilters
 } from '@/shared'
+import { IColor } from '@/shared/types'
+import { Check } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
 export const ColorFilter = () => {
+	const { setQuery, removeQuery } = useQueryFilters()
+	const searchParams = useSearchParams()
 	const { useColorsQuery } = useColors()
 	const { data, isPending, error } = useColorsQuery()
+	const { colors, setColors } = useFiltersStore()
+	const ids = searchParams.get('colors')?.split(',') || []
+	const isSelected = (newId: string) => ids.find(id => newId === id)
+	const length = searchParams.get('colors')?.split(',')?.length
+
+	const onClick = (color: IColor) => {
+		if (isSelected(color.id)) {
+			setColors(colors.filter(i => i.id !== color.id))
+			removeQuery('colors', color.id)
+		} else {
+			setColors([...colors, color])
+			setQuery('colors', color.id)
+		}
+	}
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<FilterButton name='Основной цвет' />
+				<FilterButton
+					className='text-nowrap'
+					name={`Основной цвет ${length ? `(${length})` : ''}`}
+				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				{error ? (
@@ -29,15 +55,30 @@ export const ColorFilter = () => {
 				) : (
 					data.map(color => (
 						<DropdownMenuItem
-							className='flex cursor-pointer items-center gap-2.5 text-sm font-light'
-				
+							onClick={() => onClick(color)}
+							className={cn(
+								'flex cursor-pointer items-center justify-between text-sm font-light'
+							)}
 							key={color.id}
 						>
 							<div
-								className='h-5 w-5 rounded-full'
-								style={{ backgroundColor: color.hex }}
-							/>
-							{color.name}
+								className={cn(
+									'flex items-center gap-2.5',
+									isSelected(color.id) && 'text-bg-gold'
+								)}
+							>
+								<div
+									className='h-5 w-5 rounded-full'
+									style={{ backgroundColor: color.hex }}
+								/>
+								{color.name}
+							</div>
+							{isSelected(color.id) && (
+								<Check
+									className='text-bg-gold'
+									strokeWidth={3}
+								/>
+							)}
 						</DropdownMenuItem>
 					))
 				)}

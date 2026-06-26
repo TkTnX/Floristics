@@ -13,6 +13,7 @@ export function useQueryFilters() {
 	}
 
 	const removeQuery = (name: string, id: string) => {
+		console.log({ name, id })
 		const all = params.getAll(name)[0].split(',')
 		const filtered = all.filter(item => item !== id).join(',')
 		console.log(filtered)
