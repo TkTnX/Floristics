@@ -3,4 +3,5 @@ export type QueryType = {
 	take?: number
 	sortBy?: string
 	include?: unknown
+	page?: number
 }

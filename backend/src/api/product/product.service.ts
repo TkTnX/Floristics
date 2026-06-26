@@ -7,12 +7,14 @@ export class ProductService {
   public constructor(private readonly prismaService: PrismaService) {}
 
   public async get(query: QueryType) {
-    const { where, take, sortBy } = query;
+    const { where, take, sortBy, page } = query;
+    console.log(page)
     const products = await this.prismaService.product.findMany({
       where: {
         ...JSON.parse(where || '{}'),
       },
       take: take && Number(take),
+      skip: page && (Number(page) - 1) * Number(take),
       orderBy: sortBy && JSON.parse(sortBy),
       include: {
         flowers: true,

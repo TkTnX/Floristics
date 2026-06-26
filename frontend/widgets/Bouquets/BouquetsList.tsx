@@ -10,7 +10,7 @@ interface Props {
 
 export const BouquetsList = ({ className, page, setTotalPages }: Props) => {
 	const { useProductsQuery } = useProducts()
-    const { data, isPending, error } = useProductsQuery({ take: 12 })
+    const { data, isPending, error } = useProductsQuery({ take: 12, page })
     
     useEffect(() => {
         setTotalPages(data?.totalPages || 1)

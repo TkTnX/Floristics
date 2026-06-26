@@ -1,20 +1,13 @@
 'use client'
 import { BouquetsFilters } from '@/features'
-import {
-	Breadcrumbs,
-	Pagination,
-	PaginationContent,
-	PaginationItem,
-	PaginationLink
-} from '@/shared'
+import { Breadcrumbs } from '@/shared'
 import { BouquetsList } from './BouquetsList'
-import { X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useState } from 'react'
-
+import ReactPaginate from 'react-paginate'
 export const Bouquets = () => {
 	const [totalPages, setTotalPages] = useState(1)
 	const [page, setPage] = useState(1)
-	// TODO: Сделать пагинацию
 	// TODO: Сделать фильтрацию и сортировку
 	return (
 		<div>
@@ -43,17 +36,23 @@ export const Bouquets = () => {
 					setTotalPages={setTotalPages}
 					className='mt-28.75'
 				/>
-				<Pagination>
-					<PaginationContent>
-						{[...new Array(totalPages)].map((_, index) => (
-							<PaginationItem key={index}>
-								<PaginationLink href='#'>
-									{index + 1}
-								</PaginationLink>
-							</PaginationItem>
-						))}
-					</PaginationContent>
-				</Pagination>
+			</div>
+			<div className='bg-white'>
+				<ReactPaginate
+					className='flex items-center justify-center pt-4 pb-9'
+					breakLabel='...'
+					previousClassName='cursor-pointer mr-25 '
+					nextClassName='cursor-pointer ml-25 '
+					disabledClassName='cursor-not-allowed opacity-50'
+					nextLabel={<ChevronRight />}
+					previousLabel={<ChevronLeft />}
+					activeLinkClassName='border-bg-gold border'
+					onPageChange={({ selected }) => setPage(selected + 1)}
+					pageLinkClassName='w-12.5 h-12.5 flex items-center justify-center  rounded-full cursor-pointer'
+					pageCount={totalPages}
+					pageRangeDisplayed={5}
+					renderOnZeroPageCount={null}
+				/>
 			</div>
 		</div>
 	)
