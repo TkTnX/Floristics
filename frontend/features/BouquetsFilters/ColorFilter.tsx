@@ -8,7 +8,6 @@ import {
 	FilterButton,
 	Skeleton,
 	useColors,
-	useFiltersStore,
 	useQueryFilters
 } from '@/shared'
 import { IColor } from '@/shared/types'
@@ -20,18 +19,16 @@ export const ColorFilter = () => {
 	const searchParams = useSearchParams()
 	const { useColorsQuery } = useColors()
 	const { data, isPending, error } = useColorsQuery()
-	const { colors, setColors } = useFiltersStore()
 	const ids = searchParams.get('colors')?.split(',') || []
-	const isSelected = (newId: string) => ids.find(id => newId === id)
+	const isSelected = (newId: string) =>
+		ids.find(item => newId === item.split('-')[0])
 	const length = searchParams.get('colors')?.split(',')?.length
 
 	const onClick = (color: IColor) => {
 		if (isSelected(color.id)) {
-			setColors(colors.filter(i => i.id !== color.id))
-			removeQuery('colors', color.id)
+			removeQuery('colors', `${color.id}-${color.name}-colors`)
 		} else {
-			setColors([...colors, color])
-			setQuery('colors', color.id)
+			setQuery('colors', `${color.id}-${color.name}-colors`)
 		}
 	}
 

@@ -4,4 +4,5 @@ export type QueryType = {
   sortBy?: string
   include?: string
   page?: number
+  query?: string
 };

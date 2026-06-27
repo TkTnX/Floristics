@@ -13,26 +13,22 @@ export const SelectedFilters = () => {
 		.flat()
 		.map(i => i.split('-'))
 
-	const items = splittedValues
-		.filter(item => item[1] !== '')
-		.map(item => item[1])
+	const items = splittedValues.filter(item => item[1] !== '')
 
 	if (items.length === 0) return null
+
 	return (
 		<div className='flex items-center gap-2.5'>
 			<p>Вы выбрали: </p>
 			{items.map((item, index) => (
 				<button
 					onClick={() =>
-						removeQuery(
-							item,
-							splittedValues.find(i => i[1] === item)?.[0] || ''
-						)
+						removeQuery(item[2], `${item[0]}-${item[1]}-${item[2]}`)
 					}
 					key={index}
 					className='flex items-center gap-1.75 rounded-[30px] bg-[#e4d9d2] py-1.75 pr-2 pl-5 text-sm'
 				>
-					{item} <X size={16} />
+					{item[1]} <X size={16} />
 				</button>
 			))}
 		</div>

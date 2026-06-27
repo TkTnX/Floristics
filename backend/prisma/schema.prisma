@@ -90,8 +90,7 @@ model Product {
  combo Combo[]
   category Category @relation(fields: [categoryId], references: [id])
   categoryId String
-  color Color? @relation(fields: [colorId], references: [id])
-  colorId String?
+  colors Color[]
   events Event[]
 }
 

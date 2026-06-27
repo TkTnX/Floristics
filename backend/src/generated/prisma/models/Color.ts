@@ -208,28 +208,28 @@ export type ColorCreateInput = {
   id?: string
   name: string
   hex: string
-  products?: Prisma.ProductCreateNestedManyWithoutColorInput
+  products?: Prisma.ProductCreateNestedManyWithoutColorsInput
 }
 
 export type ColorUncheckedCreateInput = {
   id?: string
   name: string
   hex: string
-  products?: Prisma.ProductUncheckedCreateNestedManyWithoutColorInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutColorsInput
 }
 
 export type ColorUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   hex?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUpdateManyWithoutColorNestedInput
+  products?: Prisma.ProductUpdateManyWithoutColorsNestedInput
 }
 
 export type ColorUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   hex?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUncheckedUpdateManyWithoutColorNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutColorsNestedInput
 }
 
 export type ColorCreateManyInput = {
@@ -268,25 +268,52 @@ export type ColorMinOrderByAggregateInput = {
   hex?: Prisma.SortOrder
 }
 
-export type ColorNullableScalarRelationFilter = {
-  is?: Prisma.ColorWhereInput | null
-  isNot?: Prisma.ColorWhereInput | null
+export type ColorListRelationFilter = {
+  every?: Prisma.ColorWhereInput
+  some?: Prisma.ColorWhereInput
+  none?: Prisma.ColorWhereInput
 }
 
-export type ColorCreateNestedOneWithoutProductsInput = {
-  create?: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput>
-  connectOrCreate?: Prisma.ColorCreateOrConnectWithoutProductsInput
-  connect?: Prisma.ColorWhereUniqueInput
+export type ColorOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
-export type ColorUpdateOneWithoutProductsNestedInput = {
-  create?: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput>
-  connectOrCreate?: Prisma.ColorCreateOrConnectWithoutProductsInput
-  upsert?: Prisma.ColorUpsertWithoutProductsInput
-  disconnect?: Prisma.ColorWhereInput | boolean
-  delete?: Prisma.ColorWhereInput | boolean
-  connect?: Prisma.ColorWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ColorUpdateToOneWithWhereWithoutProductsInput, Prisma.ColorUpdateWithoutProductsInput>, Prisma.ColorUncheckedUpdateWithoutProductsInput>
+export type ColorCreateNestedManyWithoutProductsInput = {
+  create?: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput> | Prisma.ColorCreateWithoutProductsInput[] | Prisma.ColorUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.ColorCreateOrConnectWithoutProductsInput | Prisma.ColorCreateOrConnectWithoutProductsInput[]
+  connect?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+}
+
+export type ColorUncheckedCreateNestedManyWithoutProductsInput = {
+  create?: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput> | Prisma.ColorCreateWithoutProductsInput[] | Prisma.ColorUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.ColorCreateOrConnectWithoutProductsInput | Prisma.ColorCreateOrConnectWithoutProductsInput[]
+  connect?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+}
+
+export type ColorUpdateManyWithoutProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput> | Prisma.ColorCreateWithoutProductsInput[] | Prisma.ColorUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.ColorCreateOrConnectWithoutProductsInput | Prisma.ColorCreateOrConnectWithoutProductsInput[]
+  upsert?: Prisma.ColorUpsertWithWhereUniqueWithoutProductsInput | Prisma.ColorUpsertWithWhereUniqueWithoutProductsInput[]
+  set?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  disconnect?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  delete?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  connect?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  update?: Prisma.ColorUpdateWithWhereUniqueWithoutProductsInput | Prisma.ColorUpdateWithWhereUniqueWithoutProductsInput[]
+  updateMany?: Prisma.ColorUpdateManyWithWhereWithoutProductsInput | Prisma.ColorUpdateManyWithWhereWithoutProductsInput[]
+  deleteMany?: Prisma.ColorScalarWhereInput | Prisma.ColorScalarWhereInput[]
+}
+
+export type ColorUncheckedUpdateManyWithoutProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput> | Prisma.ColorCreateWithoutProductsInput[] | Prisma.ColorUncheckedCreateWithoutProductsInput[]
+  connectOrCreate?: Prisma.ColorCreateOrConnectWithoutProductsInput | Prisma.ColorCreateOrConnectWithoutProductsInput[]
+  upsert?: Prisma.ColorUpsertWithWhereUniqueWithoutProductsInput | Prisma.ColorUpsertWithWhereUniqueWithoutProductsInput[]
+  set?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  disconnect?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  delete?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  connect?: Prisma.ColorWhereUniqueInput | Prisma.ColorWhereUniqueInput[]
+  update?: Prisma.ColorUpdateWithWhereUniqueWithoutProductsInput | Prisma.ColorUpdateWithWhereUniqueWithoutProductsInput[]
+  updateMany?: Prisma.ColorUpdateManyWithWhereWithoutProductsInput | Prisma.ColorUpdateManyWithWhereWithoutProductsInput[]
+  deleteMany?: Prisma.ColorScalarWhereInput | Prisma.ColorScalarWhereInput[]
 }
 
 export type ColorCreateWithoutProductsInput = {
@@ -306,15 +333,29 @@ export type ColorCreateOrConnectWithoutProductsInput = {
   create: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput>
 }
 
-export type ColorUpsertWithoutProductsInput = {
+export type ColorUpsertWithWhereUniqueWithoutProductsInput = {
+  where: Prisma.ColorWhereUniqueInput
   update: Prisma.XOR<Prisma.ColorUpdateWithoutProductsInput, Prisma.ColorUncheckedUpdateWithoutProductsInput>
   create: Prisma.XOR<Prisma.ColorCreateWithoutProductsInput, Prisma.ColorUncheckedCreateWithoutProductsInput>
-  where?: Prisma.ColorWhereInput
 }
 
-export type ColorUpdateToOneWithWhereWithoutProductsInput = {
-  where?: Prisma.ColorWhereInput
+export type ColorUpdateWithWhereUniqueWithoutProductsInput = {
+  where: Prisma.ColorWhereUniqueInput
   data: Prisma.XOR<Prisma.ColorUpdateWithoutProductsInput, Prisma.ColorUncheckedUpdateWithoutProductsInput>
+}
+
+export type ColorUpdateManyWithWhereWithoutProductsInput = {
+  where: Prisma.ColorScalarWhereInput
+  data: Prisma.XOR<Prisma.ColorUpdateManyMutationInput, Prisma.ColorUncheckedUpdateManyWithoutProductsInput>
+}
+
+export type ColorScalarWhereInput = {
+  AND?: Prisma.ColorScalarWhereInput | Prisma.ColorScalarWhereInput[]
+  OR?: Prisma.ColorScalarWhereInput[]
+  NOT?: Prisma.ColorScalarWhereInput | Prisma.ColorScalarWhereInput[]
+  id?: Prisma.StringFilter<"Color"> | string
+  name?: Prisma.StringFilter<"Color"> | string
+  hex?: Prisma.StringFilter<"Color"> | string
 }
 
 export type ColorUpdateWithoutProductsInput = {
@@ -324,6 +365,12 @@ export type ColorUpdateWithoutProductsInput = {
 }
 
 export type ColorUncheckedUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  hex?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type ColorUncheckedUpdateManyWithoutProductsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   hex?: Prisma.StringFieldUpdateOperationsInput | string

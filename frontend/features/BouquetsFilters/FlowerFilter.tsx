@@ -8,7 +8,6 @@ import {
 	ErrorMessage,
 	FilterButton,
 	Skeleton,
-	useFiltersStore,
 	useFlowers,
 	useQueryFilters
 } from '@/shared'
@@ -21,26 +20,26 @@ export const FlowerFilter = () => {
 	const searchParams = useSearchParams()
 	const { useFlowersQuery } = useFlowers()
 	const { data, isPending, error } = useFlowersQuery()
-	const { setFlowers, flowers } = useFiltersStore()
 	const flowersIds = searchParams.get('flowers')?.split(',') || []
 	const isSelected = (id: string) =>
-		flowersIds.find(flowerId => flowerId === id)
+		flowersIds.find(item => item.split('-')[0] === id)
 	const length = searchParams.get('flowers')?.split(',')?.length
 
 	const onClick = (flower: IFlower) => {
 		if (isSelected(flower.id)) {
-			setFlowers(flowers.filter(f => f.id !== flower.id))
-			removeQuery('flowers', flower.id)
+			removeQuery('flowers', `${flower.id}-${flower.name}-flowers`)
 		} else {
-			setFlowers([...flowers, flower])
-			setQuery('flowers', flower.id)
+			setQuery('flowers', `${flower.id}-${flower.name}-flowers`)
 		}
 	}
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<FilterButton className='text-nowrap' name={`Цветок ${length ? `(${length})` : ''}`} />
+				<FilterButton
+					className='text-nowrap'
+					name={`Цветок ${length ? `(${length})` : ''}`}
+				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				{error ? (

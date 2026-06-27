@@ -13,16 +13,14 @@ export function useQueryFilters() {
 	}
 
 	const removeQuery = (name: string, id: string) => {
-		console.log({ name, id })
 		const all = params.getAll(name)[0].split(',')
 		const filtered = all.filter(item => item !== id).join(',')
-		console.log(filtered)
 		params.set(name, filtered)
 
 		if (filtered.length === 0) {
 			params.delete(name)
 		}
-
+		
 		return router.push(`?${params.toString()}`)
 	}
 

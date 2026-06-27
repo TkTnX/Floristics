@@ -8,7 +8,6 @@ import {
 	FilterButton,
 	Skeleton,
 	useEvents,
-	useFiltersStore,
 	useQueryFilters
 } from '@/shared'
 import { IEvent } from '@/shared/types'
@@ -20,17 +19,16 @@ export const EventFilter = () => {
 	const { data, isPending, error } = useEventsQuery()
 	const searchParams = useSearchParams()
 	const ids = searchParams.get('events')?.split(',') || []
-	const isSelected = (newId: string) => ids.find(id => newId === id)
-	const { events, setEvents } = useFiltersStore()
 	const { setQuery, removeQuery } = useQueryFilters()
+	const isSelected = (newId: string) =>
+		ids.find(item => newId === item.split('-')[0])
+	
 	const length = searchParams.get('events')?.split(',')?.length
 	const onClick = (event: IEvent) => {
 		if (isSelected(event.id)) {
-			setEvents(events.filter(i => i.id !== event.id))
-			removeQuery('events', event.id)
+			removeQuery('events', `${event.id}-${event.name}-events`)
 		} else {
-			setEvents([...events, event])
-			setQuery('events', event.id)
+			setQuery('events', `${event.id}-${event.name}-events`)
 		}
 	}
 
