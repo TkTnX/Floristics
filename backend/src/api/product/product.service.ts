@@ -1,4 +1,4 @@
-import { Global, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/api/prisma/prisma.service';
 import { ProductWhereInput } from 'src/generated/prisma/models';
 import { QueryType } from 'src/types';
@@ -9,8 +9,7 @@ export class ProductService {
 
   public async get(query: QueryType) {
     const { where: queryWhere, take, sortBy, page, query: filters } = query;
-    const jsonFilters = JSON.parse(filters || '{}');
-
+    const { min, max, ...jsonFilters } = JSON.parse(filters || '{}');
     const filtersObject = Object.keys(jsonFilters).reduce(
       (acc, key) => ({
         ...acc,
@@ -30,7 +29,12 @@ export class ProductService {
     let where: ProductWhereInput = {
       ...JSON.parse(queryWhere || '{}'),
       ...filtersObject,
+      price: {
+        gte: min ? Number(min) : undefined,
+        lte: max ? Number(max) : undefined,
+      },
     };
+
     const products = await this.prismaService.product.findMany({
       where,
       take: take && Number(take),
@@ -45,8 +49,22 @@ export class ProductService {
       where,
     });
 
+    const prices = await this.prismaService.product.aggregate({
+      where,
+      _min: {
+        price: true,
+      },
+      _max: {
+        price: true,
+      },
+    });
+
     if (!products) throw new NotFoundException('Товары не найдены!');
 
-    return { products, totalPages: Math.ceil(total / Number(take)) || 1 };
+    return {
+      products,
+      totalPages: Math.ceil(total / Number(take)) || 1,
+      prices,
+    };
   }
 }

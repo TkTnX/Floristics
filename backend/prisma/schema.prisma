@@ -92,6 +92,8 @@ model Product {
   categoryId String
   colors Color[]
   events Event[]
+
+ createdAt DateTime @default(now())
 }
 
 model CartItem {

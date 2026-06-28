@@ -7,16 +7,34 @@ interface Props {
 	className?: string
 	page: number
 	setTotalPages: React.Dispatch<React.SetStateAction<number>>
+	sortBy: string | null
+	setPrice: (price: number[]) => void
 }
 
-export const BouquetsList = ({ className, page, setTotalPages }: Props) => {
+export const BouquetsList = ({
+	className,
+	page,
+	setTotalPages,
+	sortBy,
+	setPrice
+}: Props) => {
 	const searchParams = useSearchParams()
 	const { useProductsQuery } = useProducts()
 	const { data, isPending, error } = useProductsQuery({
 		take: 12,
 		page,
-		query: JSON.stringify(Object.fromEntries(searchParams.entries()))
+		query: JSON.stringify(Object.fromEntries(searchParams.entries())),
+		sortBy: sortBy
+			? JSON.stringify({ [sortBy.split('-')[0]]: sortBy.split('-')[1] })
+			: undefined
 	})
+
+	useEffect(() => {
+		console.log(data)
+		const min = data?.prices._min.price
+		const max = data?.prices._max.price
+		setPrice([min || 0, max || 0])
+	}, [data, setPrice])
 
 	useEffect(() => {
 		setTotalPages(data?.totalPages || 1)

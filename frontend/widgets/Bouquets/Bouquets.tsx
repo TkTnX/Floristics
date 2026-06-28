@@ -2,21 +2,24 @@
 import { BouquetsFilters, SelectedFilters } from '@/features'
 import { Breadcrumbs } from '@/shared'
 import { BouquetsList } from './BouquetsList'
-import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
 export const Bouquets = () => {
+	const [price, setPrice] = useState([0, 0])
+	const [sortBy, setSortBy] = useState<null | string>(null)
 	const [totalPages, setTotalPages] = useState(1)
 	const [page, setPage] = useState(1)
 	return (
 		<div>
 			<Breadcrumbs className='mt-4' items={[{ label: 'Букеты' }]} />
 
-			<BouquetsFilters />
-			{/* TODO: Вывод того, что выбрано */}
+			<BouquetsFilters price={price} setSortBy={setSortBy} />
 			<div className='container mt-4.25'>
 				<SelectedFilters />
 				<BouquetsList
+					setPrice={setPrice}
+					sortBy={sortBy}
 					page={page}
 					setTotalPages={setTotalPages}
 					className='mt-28.75'

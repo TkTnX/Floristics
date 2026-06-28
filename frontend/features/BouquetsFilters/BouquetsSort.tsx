@@ -6,19 +6,26 @@ import {
 	FilterButton,
 	SORT_ITEMS
 } from '@/shared'
+import { useState } from 'react'
 
-export const BouquetsSort = () => {
+interface Props {
+	setSortBy: React.Dispatch<React.SetStateAction<null | string>>
+}
+
+export const BouquetsSort = ({ setSortBy }: Props) => {
+	const [name, setName] = useState('Сортировка')
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<FilterButton
-					className='border-white bg-white'
-					name='Сортировка'
-				/>
+				<FilterButton className='border-white bg-white' name={name} />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				{SORT_ITEMS.map(item => (
 					<DropdownMenuItem
+						onClick={() => {
+							setSortBy(item.value)
+							setName(item.label)
+						}}
 						className='cursor-pointer text-sm font-light'
 						key={item.value}
 					>

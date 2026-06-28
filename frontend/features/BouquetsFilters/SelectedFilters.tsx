@@ -6,17 +6,17 @@ export const SelectedFilters = () => {
 	const { removeQuery } = useQueryFilters()
 	const searchParams = useSearchParams()
 	const paramsValues = Object.values(
-		Object.fromEntries(searchParams.entries())
+		Object.fromEntries(
+			searchParams.entries().filter(([key]) => key !== 'sort')
+		)
 	)
 	const splittedValues = paramsValues
 		.map(i => i.split(','))
 		.flat()
 		.map(i => i.split('-'))
-
 	const items = splittedValues.filter(item => item[1] !== '')
 
 	if (items.length === 0) return null
-
 	return (
 		<div className='flex items-center gap-2.5'>
 			<p>Вы выбрали: </p>
