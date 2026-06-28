@@ -7,7 +7,9 @@ export const SelectedFilters = () => {
 	const searchParams = useSearchParams()
 	const paramsValues = Object.values(
 		Object.fromEntries(
-			searchParams.entries().filter(([key]) => key !== 'sort')
+			searchParams
+				.entries()
+				.filter(([key]) => key !== 'min' && key !== 'max')
 		)
 	)
 	const splittedValues = paramsValues

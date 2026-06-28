@@ -10,35 +10,19 @@ import {
 	useEvents,
 	useQueryFilters
 } from '@/shared'
-import { IEvent } from '@/shared/types'
+
 import { Check } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
 
 export const EventFilter = () => {
 	const { useEventsQuery } = useEvents()
 	const { data, isPending, error } = useEventsQuery()
-	const searchParams = useSearchParams()
-	const ids = searchParams.get('events')?.split(',') || []
-	const { setQuery, removeQuery } = useQueryFilters()
-	const isSelected = (newId: string) =>
-		ids.find(item => newId === item.split('-')[0])
-	
-	const length = searchParams.get('events')?.split(',')?.length
-	const onClick = (event: IEvent) => {
-		if (isSelected(event.id)) {
-			removeQuery('events', `${event.id}-${event.name}-events`)
-		} else {
-			setQuery('events', `${event.id}-${event.name}-events`)
-		}
-	}
-
-	// TODO: Весь повторяющийся функционал вынести в отдельный файл
+	const {  isSelected, onSelect } = useQueryFilters()
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<FilterButton
 					className='text-nowrap'
-					name={`Событие ${length ? `(${length})` : ''}`}
+					name={`Событие ${isSelected('events').length ? `(${isSelected('events').length})` : ''}`}
 				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
@@ -53,15 +37,16 @@ export const EventFilter = () => {
 				) : (
 					data.map(event => (
 						<DropdownMenuItem
-							onClick={() => onClick(event)}
+							onClick={() => onSelect(event, "events")}
 							className={cn(
 								'flex cursor-pointer items-center justify-between text-sm font-light',
-								isSelected(event.id) && 'text-bg-gold'
+								isSelected('events', event.id).isSelected &&
+									'text-bg-gold'
 							)}
 							key={event.id}
 						>
 							{event.name}
-							{isSelected(event.id) && (
+							{isSelected('events', event.id).isSelected && (
 								<Check
 									className='text-bg-gold'
 									strokeWidth={3}

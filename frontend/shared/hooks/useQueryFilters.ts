@@ -6,6 +6,23 @@ export function useQueryFilters() {
 	const searchParams = useSearchParams()
 	const params = new URLSearchParams(searchParams.toString())
 
+	const isSelected = (name: string, id?: string) => {
+		const ids = searchParams.get(name)?.split(',') || []
+
+		return {
+			isSelected: ids.find(item => item.split('-')[0] === id),
+			length: ids.length
+		}
+	}
+
+	const onSelect = (item: { id: string; name: string }, name: string) => {
+		if (isSelected(name, item.id).isSelected) {
+			removeQuery(name, `${item.id}-${item.name}-${name}`)
+		} else {
+			setQuery(name, `${item.id}-${item.name}-${name}`)
+		}
+	}
+
 	const setQuery = (name: string, id: string) => {
 		params.set(name, [...params.getAll(name), id].join(','))
 
@@ -20,12 +37,14 @@ export function useQueryFilters() {
 		if (filtered.length === 0) {
 			params.delete(name)
 		}
-		
+
 		return router.push(`?${params.toString()}`)
 	}
 
 	return {
 		setQuery,
-		removeQuery
+		removeQuery,
+		isSelected,
+		onSelect
 	}
 }

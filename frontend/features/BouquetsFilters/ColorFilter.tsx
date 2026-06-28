@@ -10,34 +10,21 @@ import {
 	useColors,
 	useQueryFilters
 } from '@/shared'
-import { IColor } from '@/shared/types'
+
 import { Check } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
 
 export const ColorFilter = () => {
-	const { setQuery, removeQuery } = useQueryFilters()
-	const searchParams = useSearchParams()
+	const {  isSelected, onSelect } = useQueryFilters()
 	const { useColorsQuery } = useColors()
 	const { data, isPending, error } = useColorsQuery()
-	const ids = searchParams.get('colors')?.split(',') || []
-	const isSelected = (newId: string) =>
-		ids.find(item => newId === item.split('-')[0])
-	const length = searchParams.get('colors')?.split(',')?.length
 
-	const onClick = (color: IColor) => {
-		if (isSelected(color.id)) {
-			removeQuery('colors', `${color.id}-${color.name}-colors`)
-		} else {
-			setQuery('colors', `${color.id}-${color.name}-colors`)
-		}
-	}
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<FilterButton
 					className='text-nowrap'
-					name={`Основной цвет ${length ? `(${length})` : ''}`}
+					name={`Основной цвет ${isSelected('colors').length ? `(${isSelected('colors').length})` : ''}`}
 				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
@@ -52,7 +39,7 @@ export const ColorFilter = () => {
 				) : (
 					data.map(color => (
 						<DropdownMenuItem
-							onClick={() => onClick(color)}
+							onClick={() => onSelect(color, "colors")}
 							className={cn(
 								'flex cursor-pointer items-center justify-between text-sm font-light'
 							)}
@@ -61,7 +48,8 @@ export const ColorFilter = () => {
 							<div
 								className={cn(
 									'flex items-center gap-2.5',
-									isSelected(color.id) && 'text-bg-gold'
+									isSelected('colors', color.id).isSelected &&
+										'text-bg-gold'
 								)}
 							>
 								<div
@@ -70,7 +58,7 @@ export const ColorFilter = () => {
 								/>
 								{color.name}
 							</div>
-							{isSelected(color.id) && (
+							{isSelected('colors', color.id).isSelected && (
 								<Check
 									className='text-bg-gold'
 									strokeWidth={3}

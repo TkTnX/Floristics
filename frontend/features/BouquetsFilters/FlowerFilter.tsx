@@ -11,34 +11,20 @@ import {
 	useFlowers,
 	useQueryFilters
 } from '@/shared'
-import { IFlower } from '@/shared/types'
+
 import { Check } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
 
 export const FlowerFilter = () => {
-	const { setQuery, removeQuery } = useQueryFilters()
-	const searchParams = useSearchParams()
+	const { isSelected, onSelect } = useQueryFilters()
 	const { useFlowersQuery } = useFlowers()
 	const { data, isPending, error } = useFlowersQuery()
-	const flowersIds = searchParams.get('flowers')?.split(',') || []
-	const isSelected = (id: string) =>
-		flowersIds.find(item => item.split('-')[0] === id)
-	const length = searchParams.get('flowers')?.split(',')?.length
-
-	const onClick = (flower: IFlower) => {
-		if (isSelected(flower.id)) {
-			removeQuery('flowers', `${flower.id}-${flower.name}-flowers`)
-		} else {
-			setQuery('flowers', `${flower.id}-${flower.name}-flowers`)
-		}
-	}
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<FilterButton
 					className='text-nowrap'
-					name={`Цветок ${length ? `(${length})` : ''}`}
+					name={`Цветок ${isSelected('flowers').length ? `(${isSelected('flowers').length})` : ''}`}
 				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
@@ -53,15 +39,16 @@ export const FlowerFilter = () => {
 				) : (
 					data.map(flower => (
 						<DropdownMenuItem
-							onClick={() => onClick(flower)}
+							onClick={() => onSelect(flower, 'flowers')}
 							className={cn(
 								'flex cursor-pointer items-center justify-between text-sm font-light',
-								isSelected(flower.id) && 'text-bg-gold'
+								isSelected('flowers', flower.id).isSelected &&
+									'text-bg-gold'
 							)}
 							key={flower.id}
 						>
 							{flower.name}
-							{isSelected(flower.id) && (
+							{isSelected('flowers', flower.id).isSelected && (
 								<Check
 									className='text-bg-gold'
 									strokeWidth={3}

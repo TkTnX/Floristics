@@ -1,7 +1,6 @@
 'use client'
 
 import {
-	cn,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
@@ -15,7 +14,6 @@ export const PriceFilter = ({ min, max }: { min: number; max: number }) => {
 	const params = new URLSearchParams(searchParams.toString())
 	const router = useRouter()
 	const onChange = (type: 'min' | 'max', value: number) => {
-		console.log(value)
 		if (value <= 0) {
 			params.delete(type)
 			router.push(`?${params.toString()}`)
