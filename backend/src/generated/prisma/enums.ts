@@ -9,7 +9,10 @@
 * 🟢 You can import this file directly.
 */
 
+export const EProductType = {
+  FLOWERS: 'FLOWERS',
+  BOUQUETS: 'BOUQUETS',
+  SWEETS: 'SWEETS'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type EProductType = (typeof EProductType)[keyof typeof EProductType]

@@ -17,7 +17,7 @@ export const NavMenu = ({className}: Props) => {
 				{NAV_ITEMS.map(item => (
 					<li key={item.href}>
 						<Link
-							className='text-xs font-bold tracking-[0.08em] uppercase transition hover:opacity-80'
+							className='text-xs font-bold tracking-[0.08em] uppercase transition hover:text-bg-gold'
 							href={item.href}
 						>
 							{item.label}

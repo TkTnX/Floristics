@@ -13,7 +13,11 @@ import {
 
 import { Check } from 'lucide-react'
 
-export const ColorFilter = () => {
+interface Props {
+	className?:string
+}
+
+export const ColorFilter = ({className}: Props) => {
 	const {  isSelected, onSelect } = useQueryFilters()
 	const { useColorsQuery } = useColors()
 	const { data, isPending, error } = useColorsQuery()
@@ -23,7 +27,7 @@ export const ColorFilter = () => {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<FilterButton
-					className='text-nowrap'
+					className={cn('text-nowrap', className)}
 					name={`Основной цвет ${isSelected('colors').length ? `(${isSelected('colors').length})` : ''}`}
 				/>
 			</DropdownMenuTrigger>

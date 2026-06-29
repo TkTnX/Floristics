@@ -9,7 +9,13 @@ import {
 } from '@/shared'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export const PriceFilter = ({ min, max }: { min: number; max: number }) => {
+interface Props {
+	min: number
+	max: number
+	className?: string
+}
+
+export const PriceFilter = ({ min, max, className }: Props) => {
 	const searchParams = useSearchParams()
 	const params = new URLSearchParams(searchParams.toString())
 	const router = useRouter()
@@ -26,7 +32,7 @@ export const PriceFilter = ({ min, max }: { min: number; max: number }) => {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<FilterButton name='Цена' />
+				<FilterButton className={className} name='Цена' />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className='w-61.25 px-6 py-5'>
 				<div className='flex items-center gap-0.75'>

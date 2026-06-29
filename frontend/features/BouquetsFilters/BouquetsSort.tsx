@@ -17,7 +17,10 @@ export const BouquetsSort = ({ setSortBy }: Props) => {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<FilterButton className='border-white bg-white' name={name} />
+				<FilterButton
+					className='w-full border-white bg-white md:w-45'
+					name={name}
+				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				{SORT_ITEMS.map(item => (

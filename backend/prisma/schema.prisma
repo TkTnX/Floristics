@@ -82,6 +82,7 @@ model Product {
   images String[]
   discount Int?
   rating Int @default(0)
+  type EProductType @default(BOUQUETS)
 
   flowers Flower[]
   packaging Packaging[]
@@ -158,4 +159,10 @@ model Combo {
   price Int
   products Product[]
   cartItem CartItem[]
+}
+
+enum EProductType {
+  FLOWERS
+  BOUQUETS
+  SWEETS
 }

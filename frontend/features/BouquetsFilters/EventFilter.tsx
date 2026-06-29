@@ -13,15 +13,19 @@ import {
 
 import { Check } from 'lucide-react'
 
-export const EventFilter = () => {
+interface Props {
+	className?: string
+}
+
+export const EventFilter = ({ className }: Props) => {
 	const { useEventsQuery } = useEvents()
 	const { data, isPending, error } = useEventsQuery()
-	const {  isSelected, onSelect } = useQueryFilters()
+	const { isSelected, onSelect } = useQueryFilters()
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<FilterButton
-					className='text-nowrap'
+					className={cn('text-nowrap', className)}
 					name={`Событие ${isSelected('events').length ? `(${isSelected('events').length})` : ''}`}
 				/>
 			</DropdownMenuTrigger>
@@ -37,7 +41,7 @@ export const EventFilter = () => {
 				) : (
 					data.map(event => (
 						<DropdownMenuItem
-							onClick={() => onSelect(event, "events")}
+							onClick={() => onSelect(event, 'events')}
 							className={cn(
 								'flex cursor-pointer items-center justify-between text-sm font-light',
 								isSelected('events', event.id).isSelected &&

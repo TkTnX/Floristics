@@ -20,7 +20,8 @@ export const Product = ({ className, isCombo = false, product }: Props) => {
 			)}
 		>
 			<Link
-				href={`/products/${product.id}`}
+				// TODO: По типу поиск
+				href={`/${product.type}/${product.id}`}
 				className='absolute inset-0'
 			></Link>
 			{product.discount && (

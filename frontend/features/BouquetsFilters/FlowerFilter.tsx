@@ -14,7 +14,11 @@ import {
 
 import { Check } from 'lucide-react'
 
-export const FlowerFilter = () => {
+interface Props {
+	className?:string
+}
+
+export const FlowerFilter = ({className}: Props) => {
 	const { isSelected, onSelect } = useQueryFilters()
 	const { useFlowersQuery } = useFlowers()
 	const { data, isPending, error } = useFlowersQuery()
@@ -23,7 +27,7 @@ export const FlowerFilter = () => {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<FilterButton
-					className='text-nowrap'
+					className={cn('text-nowrap', className)}
 					name={`Цветок ${isSelected('flowers').length ? `(${isSelected('flowers').length})` : ''}`}
 				/>
 			</DropdownMenuTrigger>

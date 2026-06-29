@@ -42,7 +42,12 @@ export const BouquetsList = ({
 	if (error) return <ErrorMessage message={error} />
 
 	return (
-		<div className={cn('grid grid-cols-4 gap-2.5', className)}>
+		<div
+			className={cn(
+				'grid grid-cols-2 sm:grid-cols-3 sm:gap-2.5 lg:grid-cols-4',
+				className
+			)}
+		>
 			{isPending ? (
 				[...new Array(8)].map((_, index) => (
 					<Skeleton className='h-125 w-77' key={index} />
@@ -50,7 +55,7 @@ export const BouquetsList = ({
 			) : data.products.length > 0 ? (
 				data.products.map(product => (
 					<Product
-						className='-mt-20 hover:z-2'
+						className='hover:z-2 lg:-mt-20'
 						product={product}
 						key={product.id}
 					/>

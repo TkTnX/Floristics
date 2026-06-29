@@ -22,7 +22,7 @@ export const Bouquets = () => {
 					sortBy={sortBy}
 					page={page}
 					setTotalPages={setTotalPages}
-					className='mt-28.75'
+					className='lg:mt-28.75'
 				/>
 			</div>
 			<div className='bg-white'>
