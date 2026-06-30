@@ -1,4 +1,4 @@
-import { Button } from '@/shared'
+import { Button, Discount, ProductPrice } from '@/shared'
 import { cn } from '@/shared/lib/utils'
 import { IProduct } from '@/shared/types'
 import Image from 'next/image'
@@ -20,20 +20,10 @@ export const Product = ({ className, isCombo = false, product }: Props) => {
 			)}
 		>
 			<Link
-				// TODO: По типу поиск
-				href={`/${product.type}/${product.id}`}
+				href={`/${product.type.toLowerCase()}s/${product.id}`}
 				className='absolute inset-0'
 			></Link>
-			{product.discount && (
-				<p className='text-bg-gold absolute top-5 left-5 flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold'>
-					<Image
-						src={'/images/icons/discount-outline.svg'}
-						fill
-						alt='Обводка'
-					/>
-					-{product.discount}%
-				</p>
-			)}
+			<Discount discount={product.discount} />
 			<div className='flex h-65 items-center justify-center bg-white sm:px-5.5 lg:h-82.5'>
 				<Image
 					src={product.images[0]}
@@ -44,22 +34,7 @@ export const Product = ({ className, isCombo = false, product }: Props) => {
 			</div>
 			<h6 className='mt-4.5 text-center'>{product.title}</h6>
 			{/* TODO: CONVERT PRICE */}
-			<div className='mt-3.25 flex items-center justify-center gap-3 text-xl'>
-				{product.discount && (
-					<p className='text-bg-black font-semibold line-through opacity-50'>
-						{product.price}
-					</p>
-				)}
-				<p className='text-center font-bold'>
-					{product.discount
-						? Math.floor(
-								product.price -
-									(product.price * product.discount) / 100
-							)
-						: product.price}{' '}
-					руб
-				</p>
-			</div>
+			<ProductPrice discount={product.discount} price={product.price} />
 			{!isCombo && (
 				<div
 					className={cn(

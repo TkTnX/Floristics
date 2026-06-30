@@ -1,24 +1,34 @@
-import { IFlower, IPackaging, IReview, ICartItem, ICombo } from "."
+import { IFlower, IPackaging, IReview, ICartItem, ICombo, IColor, IEvent } from '.'
 
 export interface IProduct {
-    id: string
-    title: string
-    price: number
-    size?: string
-    event?: string
-    images: string[]
-    discount?: number
-    type: EProductType 
-
-    flowers: IFlower[]
-    packaging: IPackaging[]
-    reviews: IReview[]
-    cartItem: ICartItem[]
-    combo: ICombo[]
+	id: string
+	title: string
+	price: number
+	size?: string
+	images: string[]
+	discount?: number
+	type: EProductType
+	rating: number
+	_count: {
+		reviews: number
+	}
+	colors: IColor[]
+	flowers: IFlower[]
+	packaging: IPackaging[]
+	reviews: IReview[]
+	cartItem: ICartItem[]
+	combo: ICombo[]
+	events: IEvent[]
 }
 
 export enum EProductType {
-    FLOWERS = 'flowers',
-    BOUQUETS = 'bouquets',
-    SWEETS = 'sweets'
+	FLOWER = 'flower',
+	BOUQUET = 'bouquet',
+	SWEET = 'sweet'
+}
+
+export const ProductTypeNames = {
+	[EProductType.FLOWER]: 'Цветы',
+	[EProductType.BOUQUET]: 'Букеты',
+	[EProductType.SWEET]: 'Сладости'
 }

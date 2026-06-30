@@ -11,3 +11,5 @@ export * from "./separator"
 export * from './tooltip'
 export * from './breadcrumbs'
 export * from './filterButton'
+export * from './discount'
+export * from './productPrice'

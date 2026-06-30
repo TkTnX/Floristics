@@ -10,4 +10,9 @@ export class ProductController {
   public get(@Query() query: QueryType) {
     return this.productService.get(query);
   }
+
+  @Get(':id')
+  public async getById(@Param('id') id: string) {
+    return this.productService.getById(id);
+  }
 }

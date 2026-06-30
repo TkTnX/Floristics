@@ -10,9 +10,9 @@
 */
 
 export const EProductType = {
-  FLOWERS: 'FLOWERS',
-  BOUQUETS: 'BOUQUETS',
-  SWEETS: 'SWEETS'
+  FLOWER: 'FLOWER',
+  BOUQUET: 'BOUQUET',
+  SWEET: 'SWEET'
 } as const
 
 export type EProductType = (typeof EProductType)[keyof typeof EProductType]

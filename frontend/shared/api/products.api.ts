@@ -6,3 +6,9 @@ export const getProducts = async (query?: QueryType) => {
 
 	return data
 }
+
+export const getProductById = async (id: string) => {
+	const { data } = await axiosInstance.get(`products/${id}`)
+	
+	return data
+}

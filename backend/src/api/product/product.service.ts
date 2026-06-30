@@ -67,4 +67,23 @@ export class ProductService {
       prices,
     };
   }
+
+  public async getById(id: string) {
+    const product = await this.prismaService.product.findUnique({
+      where: { id },
+      include: {
+        colors: true,
+        combo: true,
+        events: true,
+        flowers: true,
+        _count: {
+          select: { reviews: true },
+        },
+      },
+    });
+
+    if (!product) throw new NotFoundException('Товар не найден!');
+
+    return product;
+  }
 }

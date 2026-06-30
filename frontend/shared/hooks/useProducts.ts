@@ -1,4 +1,4 @@
-import { getProducts } from '@/shared/api'
+import { getProductById, getProducts } from '@/shared/api'
 import { IProduct, QueryType } from '@/shared/types'
 import { useQuery } from '@tanstack/react-query'
 
@@ -12,8 +12,14 @@ export function useProducts() {
 				prices: { _min: { price: number }; _max: { price: number } }
 			}> => getProducts(query)
 		})
+	
+	const useGetProductByIdQuery = (id: string) => useQuery({
+		queryKey: ['product', id],
+		queryFn: (): Promise<IProduct> => getProductById(id)
+	})
 
 	return {
-		useProductsQuery
+		useProductsQuery,
+		useGetProductByIdQuery
 	}
 }
