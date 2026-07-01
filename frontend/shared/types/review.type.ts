@@ -5,7 +5,7 @@ export interface IReview {
     rating: number
     name: string
     text: string
-    image?: string
+    images: string[]
 
     user: IUser
     userId: string

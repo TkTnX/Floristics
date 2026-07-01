@@ -73,7 +73,11 @@ export class ProductService {
       where: { id },
       include: {
         colors: true,
-        combo: true,
+        combo: {
+          include: {
+            products: true,
+          },
+        },
         events: true,
         flowers: true,
         _count: {

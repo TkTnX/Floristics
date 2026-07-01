@@ -132,7 +132,7 @@ model Review {
   rating Int
   name String
   text String
-  image String?
+  images String[]
   
   user User @relation(fields: [userId], references: [id])
   userId String

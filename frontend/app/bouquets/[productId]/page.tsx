@@ -1,6 +1,7 @@
-import { BigProduct } from '@/entities'
+import { BigCombo, BigProduct } from '@/entities'
 import { Breadcrumbs, getProductById } from '@/shared'
 import { EProductType, ProductTypeNames } from '@/shared/types'
+import { ProductReviews } from '@/widgets'
 
 const ProductPage = async ({
 	params
@@ -15,7 +16,7 @@ const ProductPage = async ({
 				className='mt-4'
 				items={[
 					{
-						href: product.type,
+						href: `/${product.type.toLowerCase()}s`,
 						label: ProductTypeNames[
 							product.type.toLowerCase() as EProductType
 						]
@@ -26,6 +27,8 @@ const ProductPage = async ({
 				]}
 			/>
 			<BigProduct product={product} />
+			<BigCombo combo={product.combo[0]} />
+			<ProductReviews rating={product.rating} id={product.id} />
 		</section>
 	)
 }

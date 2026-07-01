@@ -4,15 +4,16 @@ import { BigProductImages } from './BigProductImages'
 import { IProduct } from '@/shared/types'
 import { Button, Input, ProductPrice } from '@/shared'
 import { Minus, Plus } from 'lucide-react'
+import { BigCombo } from '@/entities/Combo'
+import { ProductReviews } from '@/widgets'
 
 interface Props {
 	product: IProduct
 }
 
-// TODO: Сделать SIZE
+// TODO: Сделать SIZE у картинки
 
 export const BigProduct = ({ product }: Props) => {
-	console.log(product)
 	return (
 		<section className='container'>
 			<h2 className='mt-4 text-center text-3xl'>{product.title}</h2>
@@ -89,7 +90,7 @@ export const BigProduct = ({ product }: Props) => {
 								Доставка
 							</button>
 						</div>
-						<div className='text-sm font-light mt-5.5'>
+						<div className='mt-5.5 text-sm font-light'>
 							{product.size && (
 								<p className='grid grid-cols-[60px_1fr] gap-7'>
 									<span className='opacity-80'>Размер</span>{' '}

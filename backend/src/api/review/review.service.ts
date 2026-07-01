@@ -21,4 +21,17 @@ export class ReviewService {
 
     return reviews;
   }
+
+  public async getByProductId(id: string) {
+    const reviews = await this.prismaService.review.findMany({
+      where: {
+        productId: id,
+      },
+      include: {
+        user: true,
+      },
+    });
+
+    return reviews;
+  }
 }
