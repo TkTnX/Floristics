@@ -9,6 +9,7 @@ export interface IProduct {
 	discount?: number
 	type: EProductType
 	rating: number
+	description: string
 	_count: {
 		reviews: number
 	}

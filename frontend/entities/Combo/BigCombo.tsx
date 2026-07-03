@@ -10,7 +10,7 @@ interface Props {
 export const BigCombo = ({ combo }: Props) => {
 	const noSalePrice = combo.products[0].price + combo.products[1].price
 	return (
-		<section className='mt-3.25 bg-white p-5 container'>
+		<section className='container mt-3.25 hidden bg-white p-5 lg:block'>
 			<div className='flex items-center justify-between gap-2 border border-[#e2d7d0] py-5.5 pr-9.75 pl-12.75'>
 				<p className='text-2xl'>
 					Вместе <br /> дешевле
