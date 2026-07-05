@@ -8,6 +8,7 @@ interface Props {
 }
 
 export const BigCombo = ({ combo }: Props) => {
+	if (!combo) return null
 	const noSalePrice = combo.products[0].price + combo.products[1].price
 	return (
 		<section className='container mt-3.25 hidden bg-white p-5 lg:block'>

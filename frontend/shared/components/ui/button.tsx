@@ -5,7 +5,7 @@ import { Slot } from 'radix-ui'
 import { cn } from '@/shared/lib/utils'
 
 const buttonVariants = cva(
-	'bg-bg-black  rounded-[100px]  text-white hover:bg-bg-gold/80 transition',
+	'bg-bg-black text-nowrap rounded-[100px]  text-white hover:bg-bg-gold/80 transition',
 	{
 		variants: {
 			variant: {
